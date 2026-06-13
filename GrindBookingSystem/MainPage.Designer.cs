@@ -1,6 +1,6 @@
 ﻿namespace GrindBookingSystem
 {
-    partial class Form1
+    partial class MainPage
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,24 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainPage));
             menuStrip1 = new MenuStrip();
             tutorsToolStripMenuItem = new ToolStripMenuItem();
-            studentsToolStripMenuItem = new ToolStripMenuItem();
-            scheduleToolStripMenuItem = new ToolStripMenuItem();
-            bookinToolStripMenuItem = new ToolStripMenuItem();
-            addTutorToolStripMenuItem = new ToolStripMenuItem();
+            addtutor_btn = new ToolStripMenuItem();
             removeTutorToolStripMenuItem = new ToolStripMenuItem();
             displayTutorDetailsToolStripMenuItem = new ToolStripMenuItem();
             updateTutorDetailsToolStripMenuItem = new ToolStripMenuItem();
+            studentsToolStripMenuItem = new ToolStripMenuItem();
             addStudentToolStripMenuItem = new ToolStripMenuItem();
             removeStudentToolStripMenuItem = new ToolStripMenuItem();
             displayStudentDetailsToolStripMenuItem = new ToolStripMenuItem();
             updateStudentDetailsToolStripMenuItem = new ToolStripMenuItem();
+            scheduleToolStripMenuItem = new ToolStripMenuItem();
             addClassToScheduleToolStripMenuItem = new ToolStripMenuItem();
             removeClassFromScheduleToolStripMenuItem = new ToolStripMenuItem();
             displayRoomScheduleToolStripMenuItem = new ToolStripMenuItem();
             updateClassDetailsToolStripMenuItem = new ToolStripMenuItem();
+            bookinToolStripMenuItem = new ToolStripMenuItem();
             makeBookingToolStripMenuItem = new ToolStripMenuItem();
             manageBookingToolStripMenuItem = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
@@ -66,37 +66,17 @@
             // 
             // tutorsToolStripMenuItem
             // 
-            tutorsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { addTutorToolStripMenuItem, removeTutorToolStripMenuItem, displayTutorDetailsToolStripMenuItem, updateTutorDetailsToolStripMenuItem });
+            tutorsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { addtutor_btn, removeTutorToolStripMenuItem, displayTutorDetailsToolStripMenuItem, updateTutorDetailsToolStripMenuItem });
             tutorsToolStripMenuItem.Name = "tutorsToolStripMenuItem";
             tutorsToolStripMenuItem.Size = new Size(78, 29);
             tutorsToolStripMenuItem.Text = "Tutors";
             // 
-            // studentsToolStripMenuItem
+            // addtutor_btn
             // 
-            studentsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { addStudentToolStripMenuItem, removeStudentToolStripMenuItem, displayStudentDetailsToolStripMenuItem, updateStudentDetailsToolStripMenuItem });
-            studentsToolStripMenuItem.Name = "studentsToolStripMenuItem";
-            studentsToolStripMenuItem.Size = new Size(97, 29);
-            studentsToolStripMenuItem.Text = "Students";
-            // 
-            // scheduleToolStripMenuItem
-            // 
-            scheduleToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { addClassToScheduleToolStripMenuItem, removeClassFromScheduleToolStripMenuItem, displayRoomScheduleToolStripMenuItem, updateClassDetailsToolStripMenuItem });
-            scheduleToolStripMenuItem.Name = "scheduleToolStripMenuItem";
-            scheduleToolStripMenuItem.Size = new Size(99, 29);
-            scheduleToolStripMenuItem.Text = "Schedule";
-            // 
-            // bookinToolStripMenuItem
-            // 
-            bookinToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { makeBookingToolStripMenuItem, manageBookingToolStripMenuItem });
-            bookinToolStripMenuItem.Name = "bookinToolStripMenuItem";
-            bookinToolStripMenuItem.Size = new Size(102, 29);
-            bookinToolStripMenuItem.Text = "Bookings";
-            // 
-            // addTutorToolStripMenuItem
-            // 
-            addTutorToolStripMenuItem.Name = "addTutorToolStripMenuItem";
-            addTutorToolStripMenuItem.Size = new Size(277, 34);
-            addTutorToolStripMenuItem.Text = "Add Tutor";
+            addtutor_btn.Name = "addtutor_btn";
+            addtutor_btn.Size = new Size(277, 34);
+            addtutor_btn.Text = "Add Tutor";
+            addtutor_btn.Click += addtutor_btn_Click;
             // 
             // removeTutorToolStripMenuItem
             // 
@@ -115,6 +95,13 @@
             updateTutorDetailsToolStripMenuItem.Name = "updateTutorDetailsToolStripMenuItem";
             updateTutorDetailsToolStripMenuItem.Size = new Size(277, 34);
             updateTutorDetailsToolStripMenuItem.Text = "Update Tutor Details";
+            // 
+            // studentsToolStripMenuItem
+            // 
+            studentsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { addStudentToolStripMenuItem, removeStudentToolStripMenuItem, displayStudentDetailsToolStripMenuItem, updateStudentDetailsToolStripMenuItem });
+            studentsToolStripMenuItem.Name = "studentsToolStripMenuItem";
+            studentsToolStripMenuItem.Size = new Size(97, 29);
+            studentsToolStripMenuItem.Text = "Students";
             // 
             // addStudentToolStripMenuItem
             // 
@@ -140,6 +127,13 @@
             updateStudentDetailsToolStripMenuItem.Size = new Size(296, 34);
             updateStudentDetailsToolStripMenuItem.Text = "Update Student Details";
             // 
+            // scheduleToolStripMenuItem
+            // 
+            scheduleToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { addClassToScheduleToolStripMenuItem, removeClassFromScheduleToolStripMenuItem, displayRoomScheduleToolStripMenuItem, updateClassDetailsToolStripMenuItem });
+            scheduleToolStripMenuItem.Name = "scheduleToolStripMenuItem";
+            scheduleToolStripMenuItem.Size = new Size(99, 29);
+            scheduleToolStripMenuItem.Text = "Schedule";
+            // 
             // addClassToScheduleToolStripMenuItem
             // 
             addClassToScheduleToolStripMenuItem.Name = "addClassToScheduleToolStripMenuItem";
@@ -164,16 +158,23 @@
             updateClassDetailsToolStripMenuItem.Size = new Size(343, 34);
             updateClassDetailsToolStripMenuItem.Text = "Update Class Details";
             // 
+            // bookinToolStripMenuItem
+            // 
+            bookinToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { makeBookingToolStripMenuItem, manageBookingToolStripMenuItem });
+            bookinToolStripMenuItem.Name = "bookinToolStripMenuItem";
+            bookinToolStripMenuItem.Size = new Size(102, 29);
+            bookinToolStripMenuItem.Text = "Bookings";
+            // 
             // makeBookingToolStripMenuItem
             // 
             makeBookingToolStripMenuItem.Name = "makeBookingToolStripMenuItem";
-            makeBookingToolStripMenuItem.Size = new Size(270, 34);
+            makeBookingToolStripMenuItem.Size = new Size(249, 34);
             makeBookingToolStripMenuItem.Text = "Make Booking";
             // 
             // manageBookingToolStripMenuItem
             // 
             manageBookingToolStripMenuItem.Name = "manageBookingToolStripMenuItem";
-            manageBookingToolStripMenuItem.Size = new Size(270, 34);
+            manageBookingToolStripMenuItem.Size = new Size(249, 34);
             manageBookingToolStripMenuItem.Text = "Manage Booking";
             // 
             // pictureBox1
@@ -185,7 +186,7 @@
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             // 
-            // Form1
+            // MainPage
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -193,7 +194,7 @@
             Controls.Add(pictureBox1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
-            Name = "Form1";
+            Name = "MainPage";
             Text = "GrindBookingSystem";
             Load += Form1_Load;
             menuStrip1.ResumeLayout(false);
@@ -209,7 +210,7 @@
         private ToolStripMenuItem tutorsToolStripMenuItem;
         private ToolStripMenuItem studentsToolStripMenuItem;
         private ToolStripMenuItem scheduleToolStripMenuItem;
-        private ToolStripMenuItem addTutorToolStripMenuItem;
+        private ToolStripMenuItem addtutor_btn;
         private ToolStripMenuItem removeTutorToolStripMenuItem;
         private ToolStripMenuItem displayTutorDetailsToolStripMenuItem;
         private ToolStripMenuItem updateTutorDetailsToolStripMenuItem;
