@@ -22,5 +22,11 @@ namespace GrindBookingSystem
             AddTutor addTutorForm = new AddTutor();
             addTutorForm.Show();
         }
+
+        private void displayTutorDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DisplayTutorDetails displayTutorDetailsForm = new DisplayTutorDetails();
+            displayTutorDetailsForm.Show();
+        }
     }
 }

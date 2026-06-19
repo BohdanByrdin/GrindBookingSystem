@@ -68,7 +68,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(30, 137);
+            label3.Location = new Point(91, 128);
             label3.Name = "label3";
             label3.Size = new Size(69, 28);
             label3.TabIndex = 0;
@@ -78,17 +78,17 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(30, 184);
+            label4.Location = new Point(91, 189);
             label4.Name = "label4";
-            label4.Size = new Size(71, 28);
+            label4.Size = new Size(76, 28);
             label4.TabIndex = 0;
-            label4.Text = "Phone";
+            label4.Text = "Phone:";
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(140, 260);
+            label5.Location = new Point(91, 260);
             label5.Name = "label5";
             label5.Size = new Size(161, 28);
             label5.TabIndex = 0;
@@ -96,7 +96,9 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(btnSubmit);
+            groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(cbSubjects);
             groupBox1.Controls.Add(tb_Phone);
             groupBox1.Controls.Add(tb_Email);
@@ -106,7 +108,7 @@
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(label2);
             groupBox1.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(12, 12);
+            groupBox1.Location = new Point(12, 0);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(937, 431);
             groupBox1.TabIndex = 1;
@@ -115,9 +117,9 @@
             // 
             // btnSubmit
             // 
-            btnSubmit.Location = new Point(649, 332);
+            btnSubmit.Location = new Point(591, 318);
             btnSubmit.Name = "btnSubmit";
-            btnSubmit.Size = new Size(189, 66);
+            btnSubmit.Size = new Size(247, 80);
             btnSubmit.TabIndex = 3;
             btnSubmit.Text = "Submit";
             btnSubmit.UseVisualStyleBackColor = true;
@@ -126,23 +128,23 @@
             // cbSubjects
             // 
             cbSubjects.FormattingEnabled = true;
-            cbSubjects.Location = new Point(307, 260);
+            cbSubjects.Location = new Point(258, 256);
             cbSubjects.Name = "cbSubjects";
-            cbSubjects.Size = new Size(182, 38);
+            cbSubjects.Size = new Size(208, 38);
             cbSubjects.TabIndex = 2;
             // 
             // tb_Phone
             // 
-            tb_Phone.Location = new Point(95, 172);
+            tb_Phone.Location = new Point(173, 185);
             tb_Phone.Name = "tb_Phone";
-            tb_Phone.Size = new Size(150, 37);
+            tb_Phone.Size = new Size(214, 37);
             tb_Phone.TabIndex = 1;
             // 
             // tb_Email
             // 
-            tb_Email.Location = new Point(93, 125);
+            tb_Email.Location = new Point(170, 128);
             tb_Email.Name = "tb_Email";
-            tb_Email.Size = new Size(150, 37);
+            tb_Email.Size = new Size(259, 37);
             tb_Email.TabIndex = 1;
             // 
             // tb_LastName
@@ -163,9 +165,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(961, 475);
-            Controls.Add(label4);
-            Controls.Add(label3);
+            ClientSize = new Size(961, 441);
             Controls.Add(groupBox1);
             Name = "AddTutor";
             Text = "AddTutor";
@@ -173,7 +173,6 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
