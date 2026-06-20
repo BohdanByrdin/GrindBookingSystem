@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            closebtn = new Button();
             subNametxt = new TextBox();
             phonetxt = new TextBox();
             emailtxt = new TextBox();
@@ -39,14 +40,11 @@
             label4 = new Label();
             label2 = new Label();
             label1 = new Label();
-            closebtn = new Button();
-            Editbtn = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(Editbtn);
             groupBox1.Controls.Add(closebtn);
             groupBox1.Controls.Add(subNametxt);
             groupBox1.Controls.Add(phonetxt);
@@ -61,10 +59,20 @@
             groupBox1.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(464, 523);
+            groupBox1.Size = new Size(464, 484);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Proper Details";
+            // 
+            // closebtn
+            // 
+            closebtn.Location = new Point(281, 369);
+            closebtn.Name = "closebtn";
+            closebtn.Size = new Size(153, 77);
+            closebtn.TabIndex = 1;
+            closebtn.Text = "Close";
+            closebtn.UseVisualStyleBackColor = true;
+            closebtn.Click += closebtn_Click;
             // 
             // subNametxt
             // 
@@ -146,30 +154,11 @@
             label1.TabIndex = 0;
             label1.Text = "First Name:";
             // 
-            // closebtn
-            // 
-            closebtn.Location = new Point(241, 392);
-            closebtn.Name = "closebtn";
-            closebtn.Size = new Size(153, 77);
-            closebtn.TabIndex = 1;
-            closebtn.Text = "Close";
-            closebtn.UseVisualStyleBackColor = true;
-            closebtn.Click += closebtn_Click;
-            // 
-            // Editbtn
-            // 
-            Editbtn.Location = new Point(30, 392);
-            Editbtn.Name = "Editbtn";
-            Editbtn.Size = new Size(153, 77);
-            Editbtn.TabIndex = 1;
-            Editbtn.Text = "Edit";
-            Editbtn.UseVisualStyleBackColor = true;
-            // 
             // ProperDetails
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(488, 547);
+            ClientSize = new Size(488, 517);
             Controls.Add(groupBox1);
             Name = "ProperDetails";
             Text = "ProperDetails";
@@ -192,7 +181,6 @@
         private TextBox emailtxt;
         private TextBox lnametxt;
         private TextBox fnametxt;
-        private Button Editbtn;
         private Button closebtn;
     }
 }

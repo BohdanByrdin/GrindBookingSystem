@@ -69,6 +69,12 @@ JOIN Subjects s ON t.SubjectID = s.SubjectID";
 
             return Database.ExecuteMultiRowQuery(query);
         }
+        public void UpdateTutor(int tutorID, string firstName, string lastName, string email, string phoneNumber, int subjectID)
+        {
+            //Update a tutor in the database
+            string query = $"UPDATE Tutors SET FirstName = '{firstName}', LastName = '{lastName}', Phone = '{phoneNumber}', Email = '{email}', SubjectID = {subjectID} WHERE TutorID = {tutorID}";
+            Database.ExecuteNonQuery(query);
+        }
 
 
     }

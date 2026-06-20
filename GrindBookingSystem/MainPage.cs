@@ -28,5 +28,11 @@ namespace GrindBookingSystem
             DisplayTutorDetails displayTutorDetailsForm = new DisplayTutorDetails();
             displayTutorDetailsForm.Show();
         }
+
+        private void updateTutorDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UpdateTutor updateTutorForm = new UpdateTutor();
+            updateTutorForm.Show();
+        }
     }
 }

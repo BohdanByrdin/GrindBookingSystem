@@ -96,6 +96,7 @@
             updateTutorDetailsToolStripMenuItem.Name = "updateTutorDetailsToolStripMenuItem";
             updateTutorDetailsToolStripMenuItem.Size = new Size(277, 34);
             updateTutorDetailsToolStripMenuItem.Text = "Update Tutor Details";
+            updateTutorDetailsToolStripMenuItem.Click += updateTutorDetailsToolStripMenuItem_Click;
             // 
             // studentsToolStripMenuItem
             // 
