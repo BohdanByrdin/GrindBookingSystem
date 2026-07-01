@@ -22,6 +22,8 @@ namespace GrindBookingSystem
 
         public string SubjectName { get; set; }
 
+        public string Status { get; set; } = "Active";
+
         public Tutors(string firstName, string lastName, string email, string phoneNumber, int subjectID)
         {
             FirstName = firstName;
@@ -42,14 +44,14 @@ namespace GrindBookingSystem
         public void AddTutor(string firstName, string lastName, string email, string phoneNumber, int subjectID)
         {
             //Insert a new tutor into the database
-            string query = $"INSERT INTO Tutors (FirstName, LastName, Phone, Email, SubjectID) VALUES ('{firstName}', '{lastName}', '{phoneNumber}', '{email}', {subjectID})";
+            string query = $"INSERT INTO Tutors (FirstName, LastName, Phone, Email, SubjectID,Status) VALUES ('{firstName}', '{lastName}', '{phoneNumber}', '{email}', {subjectID},'{Status}')";
             Database.ExecuteNonQuery(query);
         }
 
         public static DataSet SelectTutor(string firstName, string lastName, string email, string phoneNumber, int subjectID)
         {
             //Select a tutor from the database
-            string query = $"SELECT * FROM Tutors WHERE FirstName = '{firstName}' AND LastName = '{lastName}' AND Phone = '{phoneNumber}' AND Email = '{email}' AND SubjectID = {subjectID}";
+            string query = $"SELECT * FROM Tutors WHERE FirstName = '{firstName}' AND LastName = '{lastName}' AND Phone = '{phoneNumber}' AND Email = '{email}' AND SubjectID = {subjectID} AND Status = 'Active'";
             return Database.ExecuteMultiRowQuery(query);
         }
 
@@ -65,7 +67,8 @@ SELECT t.TutorID,
        t.SubjectID,
        s.Description AS SubjectName
 FROM Tutors t
-JOIN Subjects s ON t.SubjectID = s.SubjectID";
+JOIN Subjects s ON t.SubjectID = s.SubjectID
+WHERE t.Status = 'Active'";
 
             return Database.ExecuteMultiRowQuery(query);
         }
@@ -73,6 +76,12 @@ JOIN Subjects s ON t.SubjectID = s.SubjectID";
         {
             //Update a tutor in the database
             string query = $"UPDATE Tutors SET FirstName = '{firstName}', LastName = '{lastName}', Phone = '{phoneNumber}', Email = '{email}', SubjectID = {subjectID} WHERE TutorID = {tutorID}";
+            Database.ExecuteNonQuery(query);
+        }
+        public static void DeleteTutor(int tutorID)
+        {
+            //Delete a tutor from the database
+            string query = $"UPDATE Tutors SET Status = 'Inactive' WHERE TutorID = {tutorID}";
             Database.ExecuteNonQuery(query);
         }
 

@@ -83,6 +83,7 @@
             removeTutorToolStripMenuItem.Name = "removeTutorToolStripMenuItem";
             removeTutorToolStripMenuItem.Size = new Size(277, 34);
             removeTutorToolStripMenuItem.Text = "Remove Tutor";
+            removeTutorToolStripMenuItem.Click += removeTutorToolStripMenuItem_Click;
             // 
             // displayTutorDetailsToolStripMenuItem
             // 
