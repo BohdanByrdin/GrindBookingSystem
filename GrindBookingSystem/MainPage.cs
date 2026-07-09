@@ -40,5 +40,11 @@ namespace GrindBookingSystem
             DeleteTutor removeTutorForm = new DeleteTutor();
             removeTutorForm.Show();
         }
+
+        private void addStudentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddStudent addStudentForm = new AddStudent();   
+            addStudentForm.Show();
+        }
     }
 }

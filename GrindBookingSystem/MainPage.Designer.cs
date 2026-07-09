@@ -111,6 +111,7 @@
             addStudentToolStripMenuItem.Name = "addStudentToolStripMenuItem";
             addStudentToolStripMenuItem.Size = new Size(296, 34);
             addStudentToolStripMenuItem.Text = "Add Student";
+            addStudentToolStripMenuItem.Click += addStudentToolStripMenuItem_Click;
             // 
             // removeStudentToolStripMenuItem
             // 
@@ -171,13 +172,13 @@
             // makeBookingToolStripMenuItem
             // 
             makeBookingToolStripMenuItem.Name = "makeBookingToolStripMenuItem";
-            makeBookingToolStripMenuItem.Size = new Size(249, 34);
+            makeBookingToolStripMenuItem.Size = new Size(270, 34);
             makeBookingToolStripMenuItem.Text = "Make Booking";
             // 
             // manageBookingToolStripMenuItem
             // 
             manageBookingToolStripMenuItem.Name = "manageBookingToolStripMenuItem";
-            manageBookingToolStripMenuItem.Size = new Size(249, 34);
+            manageBookingToolStripMenuItem.Size = new Size(270, 34);
             manageBookingToolStripMenuItem.Text = "Manage Booking";
             // 
             // pictureBox1
