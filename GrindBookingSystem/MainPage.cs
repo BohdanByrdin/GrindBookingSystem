@@ -43,8 +43,14 @@ namespace GrindBookingSystem
 
         private void addStudentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddStudent addStudentForm = new AddStudent();   
+            AddStudent addStudentForm = new AddStudent();
             addStudentForm.Show();
+        }
+
+        private void removeStudentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RemoveStudent removeStudentForm = new RemoveStudent();  
+            removeStudentForm.Show();
         }
     }
 }

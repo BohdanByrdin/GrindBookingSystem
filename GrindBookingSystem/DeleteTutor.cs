@@ -47,7 +47,11 @@ namespace GrindBookingSystem
 
         private void btnCloseUpdate_Click(object sender, EventArgs e)
         {
-            Close();
+            gbDetails.Visible = false;
+            fnametxt.Clear();
+            lnametxt.Clear();
+            emailtxt.Clear();
+            phonetxt.Clear();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -85,6 +89,11 @@ namespace GrindBookingSystem
             {
                 MessageBox.Show("Error updating tutor", "Error");
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

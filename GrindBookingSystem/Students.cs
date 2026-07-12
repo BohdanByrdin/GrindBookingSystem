@@ -31,6 +31,12 @@ namespace GrindBookingSystem
             string query = $"SELECT * FROM Students WHERE FirstName = '{firstName}' AND LastName = '{lastName}' AND Phone = '{phoneNumber}' AND Email = '{email}' AND DateOfBirth = '{dateOfBirth}' AND Status = 'Active'";
             return Database.ExecuteMultiRowQuery(query);
         }
+        public static DataSet SelectAllStudents()
+        {
+            //Select all students from the database
+            string query = "SELECT * FROM Students WHERE Status = 'Active'";
+            return Database.ExecuteMultiRowQuery(query);
+        }
 
         public void AddStudent(string firstName, string lastName, string email, string phoneNumber, string dateOfBirth)
         {
@@ -47,5 +53,13 @@ VALUES
  '{Status}')";
             Database.ExecuteNonQuery(query);
         }
+
+        public static void RemoveStudent(int StudentID)
+        {
+            //Remove a student from the database
+            string query = $"UPDATE Students SET Status = 'Inactive' WHERE StudentID = '{StudentID}'";
+            Database.ExecuteNonQuery(query);
+        }
     }
+
 }
