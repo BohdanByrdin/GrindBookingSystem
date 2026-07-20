@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            closebtn = new Button();
+            label1 = new Label();
             dataGridView1 = new DataGridView();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            label1 = new Label();
-            closebtn = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -49,25 +49,7 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "All Tutors";
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(86, 124);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(1121, 374);
-            dataGridView1.TabIndex = 0;
-            dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick_1;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(86, 72);
-            label1.Name = "label1";
-            label1.Size = new Size(543, 38);
-            label1.TabIndex = 1;
-            label1.Text = "Double Click on any cell to check details";
+            groupBox1.Enter += groupBox1_Enter;
             // 
             // closebtn
             // 
@@ -78,6 +60,25 @@
             closebtn.Text = "Close";
             closebtn.UseVisualStyleBackColor = true;
             closebtn.Click += closebtn_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(86, 72);
+            label1.Name = "label1";
+            label1.Size = new Size(543, 38);
+            label1.TabIndex = 1;
+            label1.Text = "Double Click on any cell to check details";
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(86, 124);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 62;
+            dataGridView1.Size = new Size(1121, 374);
+            dataGridView1.TabIndex = 0;
+            dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick_1;
             // 
             // DisplayTutorDetails
             // 

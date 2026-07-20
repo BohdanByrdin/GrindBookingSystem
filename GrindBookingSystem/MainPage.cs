@@ -49,8 +49,14 @@ namespace GrindBookingSystem
 
         private void removeStudentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RemoveStudent removeStudentForm = new RemoveStudent();  
+            RemoveStudent removeStudentForm = new RemoveStudent();
             removeStudentForm.Show();
+        }
+
+        private void displayStudentDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StudentDetails studentDetailsForm = new StudentDetails();
+            studentDetailsForm.Show();
         }
     }
 }

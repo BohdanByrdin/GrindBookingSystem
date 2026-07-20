@@ -125,6 +125,7 @@
             displayStudentDetailsToolStripMenuItem.Name = "displayStudentDetailsToolStripMenuItem";
             displayStudentDetailsToolStripMenuItem.Size = new Size(296, 34);
             displayStudentDetailsToolStripMenuItem.Text = "Display Student Details";
+            displayStudentDetailsToolStripMenuItem.Click += displayStudentDetailsToolStripMenuItem_Click;
             // 
             // updateStudentDetailsToolStripMenuItem
             // 

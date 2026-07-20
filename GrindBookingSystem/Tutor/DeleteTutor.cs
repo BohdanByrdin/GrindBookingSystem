@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GrindBookingSystem.Tutor;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,19 +8,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace GrindBookingSystem
 {
-    public partial class RemoveStudent : Form
+    public partial class DeleteTutor : Form
     {
-        public RemoveStudent()
+        public DeleteTutor()
         {
             InitializeComponent();
         }
 
-        private void RemoveStudent_Load(object sender, EventArgs e)
+        private void DeleteTutor_Load(object sender, EventArgs e)
         {
-            DataSet ds = Students.SelectAllStudents();
+            DataSet ds = Tutors.SelectAllTutors();
 
             if (ds.Tables.Count > 0)
             {
@@ -29,44 +31,56 @@ namespace GrindBookingSystem
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            gbDetails.Visible = true;
+
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-                studentIDtxt.Text = row.Cells["StudentID"].Value.ToString()!;
+
+                gbDetails.Visible = true;
+                tutorIDtxt.Text = row.Cells["TutorID"].Value.ToString()!;
                 fnametxt.Text = row.Cells["FirstName"].Value.ToString()!;
                 lnametxt.Text = row.Cells["LastName"].Value.ToString()!;
                 emailtxt.Text = row.Cells["Email"].Value.ToString()!;
                 phonetxt.Text = row.Cells["Phone"].Value.ToString()!;
-                dobtxt.Text = row.Cells["DateOfBirth"].Value.ToString()!;
+                Subject.Text = row.Cells["SubjectName"].Value.ToString()!;
             }
         }
 
-        private void tutorIDtxt_Click(object sender, EventArgs e)
+        private void btnCloseUpdate_Click(object sender, EventArgs e)
         {
-
+            gbDetails.Visible = false;
+            fnametxt.Clear();
+            lnametxt.Clear();
+            emailtxt.Clear();
+            phonetxt.Clear();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (studentIDtxt != null)
+
+        }
+
+        private void btnDelete_Click_1(object sender, EventArgs e)
+        {
+            tutorIDtxt.Text = dataGridView1.CurrentRow.Cells["TutorID"].Value.ToString()!;
+            if (tutorIDtxt != null)
             {
-                if (MessageBox.Show("Are you sure you want to delete this Student?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Are you sure you want to delete this tutor?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    int studentID = Convert.ToInt32(studentIDtxt.Text);
-                    Students.RemoveStudent(studentID);
-                    MessageBox.Show("Student deleted successfully", "Success");
+                    int tutorID = Convert.ToInt32(tutorIDtxt.Text);
+                    Tutors.DeleteTutor(tutorID);
+                    MessageBox.Show("Tutor deleted successfully", "Success");
                 }
                 else
                 {
-                    MessageBox.Show("Student deletion cancelled", "Cancelled");
+                    MessageBox.Show("Tutor deletion cancelled", "Cancelled");
                 }
                 gbDetails.Visible = false;
                 fnametxt.Clear();
                 lnametxt.Clear();
                 emailtxt.Clear();
                 phonetxt.Clear();
-                DataSet ds = Students.SelectAllStudents();
+                DataSet ds = Tutors.SelectAllTutors();
                 if (ds.Tables.Count > 0)
                 {
                     dataGridView1.DataSource = ds.Tables[0];
@@ -82,14 +96,6 @@ namespace GrindBookingSystem
         {
             Close();
         }
-
-        private void btnCloseUpdate_Click(object sender, EventArgs e)
-        {
-            gbDetails.Visible = false;
-            fnametxt.Clear();
-            lnametxt.Clear();
-            emailtxt.Clear();
-            phonetxt.Clear();
-        }
     }
 }
+

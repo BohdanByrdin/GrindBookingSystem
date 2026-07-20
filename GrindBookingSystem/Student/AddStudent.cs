@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GrindBookingSystem.Student;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

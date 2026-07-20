@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GrindBookingSystem
+namespace GrindBookingSystem.Student
 {
     internal class Students
     {
