@@ -9,6 +9,7 @@ namespace GrindBookingSystem.Student
 {
     internal class Students
     {
+        int StudentID { get; set; }
         string FirstName { get; set; }
         string LastName { get; set; }
         string Email { get; set; }
@@ -18,6 +19,15 @@ namespace GrindBookingSystem.Student
 
         public Students(string firstName, string lastName, string email, string phoneNumber, string dateOfBirth)
         {
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            PhoneNumber = phoneNumber;
+            DateOfBirth = dateOfBirth;
+        }
+        public Students(int studentID, string firstName, string lastName, string email, string phoneNumber, string dateOfBirth)
+        {
+            StudentID = studentID;
             FirstName = firstName;
             LastName = lastName;
             Email = email;
@@ -60,6 +70,11 @@ VALUES
             string query = $"UPDATE Students SET Status = 'Inactive' WHERE StudentID = '{StudentID}'";
             Database.ExecuteNonQuery(query);
         }
+        public void UpdateStudent(int studentID, string firstName, string lastName, string email, string phoneNumber, string dateOfBirth)
+        {
+            //Update a student in the database
+            string query = $@"UPDATE Students SET FirstName = '{firstName}', LastName = '{lastName}', Phone = '{phoneNumber}', Email = '{email}', DateOfBirth = TO_DATE('{dateOfBirth}', 'YYYY-MM-DD') WHERE StudentID = {studentID}";
+            Database.ExecuteNonQuery(query);
+        }
     }
-
 }

@@ -58,5 +58,11 @@ namespace GrindBookingSystem
             StudentDetails studentDetailsForm = new StudentDetails();
             studentDetailsForm.Show();
         }
+
+        private void updateStudentDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Student.UpdateStudent updateStudentForm = new Student.UpdateStudent();
+            updateStudentForm.Show();
+        }
     }
 }
