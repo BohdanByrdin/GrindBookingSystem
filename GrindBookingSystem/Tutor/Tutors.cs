@@ -40,6 +40,15 @@ namespace GrindBookingSystem.Tutor
             PhoneNumber = phoneNumber;
             SubjectName = subjectName;
         }
+        public Tutors(int tutorID, string firstName, string lastName, string email, string phoneNumber, int subjectID)
+        {
+            TutorID = tutorID;
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            PhoneNumber = phoneNumber;
+            SubjectID = subjectID;
+        }
 
         public void AddTutor(string firstName, string lastName, string email, string phoneNumber, int subjectID)
         {
@@ -83,6 +92,23 @@ WHERE t.Status = 'Active'";
             //Delete a tutor from the database
             string query = $"UPDATE Tutors SET Status = 'Inactive' WHERE TutorID = {tutorID}";
             Database.ExecuteNonQuery(query);
+        }
+        public static List<Tutors> GetTutors()
+        {
+            DataSet ds = SelectAllTutors();
+            List<Tutors> tutors = new List<Tutors>();
+            foreach (DataRow row in ds.Tables[0].Rows)
+            {
+                tutors.Add(new Tutors(
+                    row["TutorID"] != DBNull.Value ? Convert.ToInt32(row["TutorID"]) : 0,
+                    row["FirstName"].ToString()!,
+                    row["LastName"].ToString()!,
+                    row["Email"].ToString()!,
+                    row["Phone"].ToString()!,
+                    row["SubjectID"] != DBNull.Value ? Convert.ToInt32(row["SubjectID"]) : 0
+                ));
+            }
+            return tutors;
         }
 
 

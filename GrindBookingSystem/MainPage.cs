@@ -64,5 +64,11 @@ namespace GrindBookingSystem
             Student.UpdateStudent updateStudentForm = new Student.UpdateStudent();
             updateStudentForm.Show();
         }
+
+        private void addClassToScheduleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Schedule.AddClass addClassForm = new Schedule.AddClass();
+            addClassForm.Show();
+        }
     }
 }
