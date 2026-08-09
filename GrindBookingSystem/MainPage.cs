@@ -70,5 +70,11 @@ namespace GrindBookingSystem
             Schedule.AddClass addClassForm = new Schedule.AddClass();
             addClassForm.Show();
         }
+
+        private void removeClassFromScheduleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Schedule.RemoveClass removeClassForm = new Schedule.RemoveClass();
+            removeClassForm.Show();
+        }
     }
 }

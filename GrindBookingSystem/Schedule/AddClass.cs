@@ -135,6 +135,7 @@ namespace GrindBookingSystem.Schedule
             Classes newClass = new Classes(subjectID, tutorId, roomID, selectedDate, startTimeString, endTimeString);
             newClass.AddClass(subjectID, tutorId, roomID, selectedDate, startTimeString, endTimeString);
             MessageBox.Show("Class added successfully!");
+            return;
 
 
         }

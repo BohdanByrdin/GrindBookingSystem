@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,8 @@ namespace GrindBookingSystem.Schedule
         public DateTime ClassDate { get; set; }
         public string StartTime { get; set; }
         public string EndTime { get; set; }
+
+        public string Status { get; set; } = "Active";
 
         public Classes(int classID, int subject, int tutor, string room, DateTime date, string startTime, string endTime)
         {
@@ -40,11 +43,11 @@ namespace GrindBookingSystem.Schedule
         {
             string query =
     $"INSERT INTO Classes " +
-    $"(SubjectID, TutorID, RoomNo, ClassDate, StartTime, EndTime) " +
+    $"(SubjectID, TutorID, RoomNo, ClassDate, StartTime, EndTime,Status) " +
     $"VALUES " +
     $"({subject}, {tutor}, '{room}', " +
     $"TO_DATE('{date:yyyy-MM-dd}', 'YYYY-MM-DD'), " +
-    $"'{startTime}', '{endTime}')";
+    $"'{startTime}', '{endTime}', '{Status}')";
 
 
             Database.ExecuteNonQuery(query);
@@ -58,6 +61,21 @@ namespace GrindBookingSystem.Schedule
                 return true;
             }
             return false;
+        }
+        public static DataSet selectAllClassesWithMonth(int month,int year)
+        {
+            string query =
+         $"SELECT * FROM Classes " +
+         $"WHERE TO_CHAR(ClassDate, 'MM') = '{month:00}' " +
+         $"AND TO_CHAR(ClassDate, 'YYYY') = '{year}' " +
+         $"AND Status = 'Active'";
+
+            return Database.ExecuteMultiRowQuery(query);
+        }
+        public static void RemoveClass(int classID)
+        {
+            string query = $"UPDATE Classes SET Status = 'Inactive' WHERE ClassID = {classID}";
+            Database.ExecuteNonQuery(query);
         }
     }
 }

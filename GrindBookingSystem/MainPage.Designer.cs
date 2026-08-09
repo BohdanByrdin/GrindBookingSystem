@@ -153,6 +153,7 @@
             removeClassFromScheduleToolStripMenuItem.Name = "removeClassFromScheduleToolStripMenuItem";
             removeClassFromScheduleToolStripMenuItem.Size = new Size(343, 34);
             removeClassFromScheduleToolStripMenuItem.Text = "Remove Class from Schedule";
+            removeClassFromScheduleToolStripMenuItem.Click += removeClassFromScheduleToolStripMenuItem_Click;
             // 
             // displayRoomScheduleToolStripMenuItem
             // 
@@ -176,13 +177,13 @@
             // makeBookingToolStripMenuItem
             // 
             makeBookingToolStripMenuItem.Name = "makeBookingToolStripMenuItem";
-            makeBookingToolStripMenuItem.Size = new Size(249, 34);
+            makeBookingToolStripMenuItem.Size = new Size(270, 34);
             makeBookingToolStripMenuItem.Text = "Make Booking";
             // 
             // manageBookingToolStripMenuItem
             // 
             manageBookingToolStripMenuItem.Name = "manageBookingToolStripMenuItem";
-            manageBookingToolStripMenuItem.Size = new Size(249, 34);
+            manageBookingToolStripMenuItem.Size = new Size(270, 34);
             manageBookingToolStripMenuItem.Text = "Manage Booking";
             // 
             // pictureBox1
