@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,9 @@ namespace GrindBookingSystem.Schedule
         {
             InitializeComponent();
         }
-
+        public DateTime selectedDate;
+        public string startTimeString;
+        public string endTimeString;
         private void AddClass_Load(object sender, EventArgs e)
         {
             cbSubjects.Items.Clear();
@@ -32,11 +35,11 @@ namespace GrindBookingSystem.Schedule
             }
             foreach (Tutors tutor in tutors)
             {
-                cbTutors.Items.Add(tutor.FirstName + " " + tutor.LastName);
+                cbTutors.Items.Add(tutor);
             }
             foreach (Rooms room in rooms)
             {
-                cbRooms.Items.Add(room.RoomNo + " - " + room.Description);
+                cbRooms.Items.Add(room);
             }
 
         }
@@ -44,6 +47,101 @@ namespace GrindBookingSystem.Schedule
         private void cbSubjects_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            selectedDate = date.SelectionStart;
+
+            MessageBox.Show(selectedDate.ToString("dd/MM/yyyy"));
+            DateTime start = startTime.Value;
+            DateTime end = endTime.Value;
+            if (start >= end)
+            {
+                MessageBox.Show("End time must be later than start time.");
+                return;
+            }
+
+            if ((end - start).TotalMinutes < 30)
+            {
+                MessageBox.Show("The session must be at least 30 minutes.");
+                return;
+            }
+
+            startTimeString = startTime.Value.ToString("HH:mm");
+            endTimeString = endTime.Value.ToString("HH:mm");
+
+            if (MessageBox.Show("Are you sure you want to leave this date and time?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                date.Enabled = false;
+                startTime.Enabled = false;
+                endTime.Enabled = false;
+            }
+            if (cbTutors.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a tutor.");
+                return;
+            }
+
+            if (cbSubjects.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a subject.");
+                return;
+            }
+
+            if (cbRooms.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a room.");
+                return;
+            }
+
+
+            string tutor = cbTutors.Text;
+            string subject = cbSubjects.Text;
+            string room = cbRooms.Text;
+
+            dataGridView1.Rows.Add(
+                tutor,
+                subject,
+                room,
+                selectedDate.ToString("dd/MM/yyyy"),
+                start.ToString("HH:mm"),
+                end.ToString("HH:mm")
+            );
+            saveTheClass.Enabled = true;
+        }
+
+        private void saveTheClass_Click(object sender, EventArgs e)
+        {
+            if (cbSubjects.SelectedIndex == -1 || cbTutors.SelectedIndex == -1 || cbRooms.SelectedIndex==-1) { 
+            MessageBox.Show("Please select a subject, tutor, or room before saving the class.");
+                return;
+            }
+            int subjectID = cbSubjects.SelectedIndex + 1;
+            Tutors selectedTutor = (Tutors)cbTutors.SelectedItem;
+
+            int tutorId = selectedTutor.TutorID;
+            string selectedRoom = cbRooms.SelectedItem.ToString()!;
+            string roomID = selectedRoom.Split('-')[0].Trim();
+            if (Classes.checkClassOverlap(tutorId.ToString(), roomID, selectedDate, startTimeString, endTimeString))
+            {
+                MessageBox.Show("The selected tutor or room is already booked for this time slot. Please choose a different time or tutor/room.");
+                date.Enabled = true;
+                startTime.Enabled = true;
+                endTime.Enabled = true;
+                return;
+            }
+            Classes newClass = new Classes(subjectID, tutorId, roomID, selectedDate, startTimeString, endTimeString);
+            newClass.AddClass(subjectID, tutorId, roomID, selectedDate, startTimeString, endTimeString);
+            MessageBox.Show("Class added successfully!");
+
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

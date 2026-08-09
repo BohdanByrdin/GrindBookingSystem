@@ -43,5 +43,9 @@ namespace GrindBookingSystem.Schedule
     
                 return rooms;
         }
+        public override string ToString()
+        {
+            return RoomNo + " - " + Description;
+        }
     }
 }

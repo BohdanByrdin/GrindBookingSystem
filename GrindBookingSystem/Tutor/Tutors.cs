@@ -110,6 +110,10 @@ WHERE t.Status = 'Active'";
             }
             return tutors;
         }
+        public override string ToString()
+        {
+            return FirstName + " " + LastName;
+        }
 
 
     }
