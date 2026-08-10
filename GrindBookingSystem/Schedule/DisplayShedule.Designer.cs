@@ -30,12 +30,12 @@
         {
             button1 = new Button();
             groupBox4 = new GroupBox();
-            comboBox1 = new ComboBox();
+            cbrooms = new ComboBox();
             groupBox3 = new GroupBox();
             rbInactive = new RadioButton();
             rbActive = new RadioButton();
             groupBox2 = new GroupBox();
-            monthCalendar1 = new MonthCalendar();
+            calendar = new MonthCalendar();
             groupBox1 = new GroupBox();
             dataGridView1 = new DataGridView();
             groupBox4.SuspendLayout();
@@ -49,38 +49,40 @@
             // 
             button1.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.OrangeRed;
-            button1.Location = new Point(1183, 635);
+            button1.Location = new Point(1352, 635);
             button1.Name = "button1";
             button1.Size = new Size(231, 72);
             button1.TabIndex = 4;
             button1.Text = "Close";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // groupBox4
             // 
-            groupBox4.Controls.Add(comboBox1);
+            groupBox4.Controls.Add(cbrooms);
             groupBox4.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox4.Location = new Point(1098, 503);
+            groupBox4.Location = new Point(1267, 503);
             groupBox4.Name = "groupBox4";
             groupBox4.Size = new Size(396, 88);
             groupBox4.TabIndex = 7;
             groupBox4.TabStop = false;
-            groupBox4.Text = "Order By";
+            groupBox4.Text = "Choose Room";
             // 
-            // comboBox1
+            // cbrooms
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(49, 33);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(312, 36);
-            comboBox1.TabIndex = 0;
+            cbrooms.FormattingEnabled = true;
+            cbrooms.Location = new Point(49, 33);
+            cbrooms.Name = "cbrooms";
+            cbrooms.Size = new Size(312, 36);
+            cbrooms.TabIndex = 0;
+            cbrooms.SelectedIndexChanged += cbrooms_SelectedIndexChanged;
             // 
             // groupBox3
             // 
             groupBox3.Controls.Add(rbInactive);
             groupBox3.Controls.Add(rbActive);
             groupBox3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox3.Location = new Point(1098, 330);
+            groupBox3.Location = new Point(1267, 330);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(396, 167);
             groupBox3.TabIndex = 5;
@@ -94,13 +96,14 @@
             rbInactive.Name = "rbInactive";
             rbInactive.Size = new Size(105, 29);
             rbInactive.TabIndex = 3;
-            rbInactive.TabStop = true;
             rbInactive.Text = "Inactive";
             rbInactive.UseVisualStyleBackColor = true;
+            rbInactive.Click += rbInactive_Click;
             // 
             // rbActive
             // 
             rbActive.AutoSize = true;
+            rbActive.Checked = true;
             rbActive.Location = new Point(38, 71);
             rbActive.Name = "rbActive";
             rbActive.Size = new Size(91, 29);
@@ -108,23 +111,25 @@
             rbActive.TabStop = true;
             rbActive.Text = "Active";
             rbActive.UseVisualStyleBackColor = true;
+            rbActive.Click += rbActive_Click;
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(monthCalendar1);
+            groupBox2.Controls.Add(calendar);
             groupBox2.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox2.Location = new Point(1098, 14);
+            groupBox2.Location = new Point(1267, 14);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(396, 310);
             groupBox2.TabIndex = 6;
             groupBox2.TabStop = false;
             groupBox2.Text = "Month";
             // 
-            // monthCalendar1
+            // calendar
             // 
-            monthCalendar1.Location = new Point(49, 33);
-            monthCalendar1.Name = "monthCalendar1";
-            monthCalendar1.TabIndex = 0;
+            calendar.Location = new Point(49, 33);
+            calendar.Name = "calendar";
+            calendar.TabIndex = 0;
+            calendar.DateChanged += calendar_DateChanged;
             // 
             // groupBox1
             // 
@@ -132,7 +137,7 @@
             groupBox1.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(18, 14);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1074, 714);
+            groupBox1.Size = new Size(1243, 714);
             groupBox1.TabIndex = 3;
             groupBox1.TabStop = false;
             groupBox1.Text = "Schedule";
@@ -143,14 +148,14 @@
             dataGridView1.Location = new Point(12, 33);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(1045, 660);
+            dataGridView1.Size = new Size(1212, 660);
             dataGridView1.TabIndex = 0;
             // 
             // DisplayShedule
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1512, 743);
+            ClientSize = new Size(1688, 743);
             Controls.Add(button1);
             Controls.Add(groupBox4);
             Controls.Add(groupBox3);
@@ -158,6 +163,7 @@
             Controls.Add(groupBox1);
             Name = "DisplayShedule";
             Text = "DisplayShedule";
+            Load += DisplayShedule_Load;
             groupBox4.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
@@ -171,12 +177,12 @@
 
         private Button button1;
         private GroupBox groupBox4;
-        private ComboBox comboBox1;
+        private ComboBox cbrooms;
         private GroupBox groupBox3;
         private RadioButton rbInactive;
         private RadioButton rbActive;
         private GroupBox groupBox2;
-        private MonthCalendar monthCalendar1;
+        private MonthCalendar calendar;
         private GroupBox groupBox1;
         private DataGridView dataGridView1;
     }
