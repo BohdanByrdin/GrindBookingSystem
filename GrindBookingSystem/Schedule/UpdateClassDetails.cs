@@ -94,6 +94,19 @@ namespace GrindBookingSystem.Schedule
         {
             Update.Enabled = true;
             newSelectedDate = date.SelectionStart;
+            DateTime start = startTime.Value;
+            DateTime end = endTime.Value;
+            if (start >= end)
+            {
+                MessageBox.Show("End time must be later than start time.");
+                return;
+            }
+
+            if ((end - start).TotalMinutes < 59)
+            {
+                MessageBox.Show("The session must be at least 59 minutes.");
+                return;
+            }
             newStartTimeString = startTime.Value.ToString("HH:mm");
             newEndTimeString = endTime.Value.ToString("HH:mm");
             date.Enabled = false;

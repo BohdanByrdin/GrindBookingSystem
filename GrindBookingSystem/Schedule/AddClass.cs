@@ -54,7 +54,6 @@ namespace GrindBookingSystem.Schedule
 
             selectedDate = date.SelectionStart;
 
-            MessageBox.Show(selectedDate.ToString("dd/MM/yyyy"));
             DateTime start = startTime.Value;
             DateTime end = endTime.Value;
             if (start >= end)
@@ -63,9 +62,9 @@ namespace GrindBookingSystem.Schedule
                 return;
             }
 
-            if ((end - start).TotalMinutes < 30)
+            if ((end - start).TotalMinutes < 59)
             {
-                MessageBox.Show("The session must be at least 30 minutes.");
+                MessageBox.Show("The session must be at least 59 minutes.");
                 return;
             }
 
