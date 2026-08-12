@@ -55,14 +55,29 @@ namespace GrindBookingSystem.Schedule
         public static Boolean checkClassOverlap(string tutorID, string roomNo, DateTime date, string startTime, string endTime)
         {
             string query = $"SELECT * FROM Classes WHERE (TutorID = '{tutorID}' OR RoomNo = '{roomNo}') AND ClassDate = TO_DATE('{date:yyyy-MM-dd}', 'YYYY-MM-DD') AND ((StartTime < '{endTime}' AND EndTime > '{startTime}'))";
-            var ds = Database.ExecuteMultiRowQuery(query);
+            DataSet ds = Database.ExecuteMultiRowQuery(query);
             if (ds.Tables[0].Rows.Count > 0)
             {
                 return true;
             }
             return false;
         }
-        public static DataSet selectAllClassesWithMonth(int month,int year)
+        public static bool CheckClassOverlapForUpdate(int classID,int tutorID,string roomNo,DateTime date,string startTime,string endTime)
+        {
+            string query = $@"
+        SELECT ClassID
+        FROM Classes
+        WHERE ClassID <> {classID}
+          AND (TutorID = {tutorID} OR RoomNo = '{roomNo}')
+          AND ClassDate = TO_DATE('{date:yyyy-MM-dd}', 'YYYY-MM-DD')
+          AND StartTime < '{endTime}'
+          AND EndTime > '{startTime}'";
+
+            DataSet ds = Database.ExecuteMultiRowQuery(query);
+
+            return ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0;
+        }
+        public static DataSet selectAllClassesWithMonth(int month, int year)
         {
             string query =
          $"SELECT * FROM Classes " +
@@ -77,7 +92,7 @@ namespace GrindBookingSystem.Schedule
             string query = $"UPDATE Classes SET Status = 'Inactive' WHERE ClassID = {classID}";
             Database.ExecuteNonQuery(query);
         }
-        public static DataSet selectAllClassesWithMonthAndRoom(int month, int year, string roomNo,string status)
+        public static DataSet selectAllClassesWithMonthAndRoom(int month, int year, string roomNo, string status)
         {
             string query =
          $"SELECT * FROM Classes " +
@@ -95,6 +110,11 @@ namespace GrindBookingSystem.Schedule
          $"AND TO_CHAR(ClassDate, 'YYYY') = '{year}' " +
          $"AND Status = '{status}'";
             return Database.ExecuteMultiRowQuery(query);
+        }
+        public void UpdateClass(int classID, int subject, int tutor, string room, DateTime date, string startTime, string endTime)
+        {
+            string query = $"UPDATE Classes SET SubjectID = {subject}, TutorID = {tutor}, RoomNo = '{room}', ClassDate = TO_DATE('{date:yyyy-MM-dd}', 'YYYY-MM-DD'), StartTime = '{startTime}', EndTime = '{endTime}' WHERE ClassID = {classID}";
+            Database.ExecuteNonQuery(query);
         }
     }
 }

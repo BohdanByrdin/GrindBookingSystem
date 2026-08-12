@@ -105,6 +105,7 @@
             button1.TabIndex = 2;
             button1.Text = "Close";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // gbDetails
             // 
@@ -115,7 +116,7 @@
             gbDetails.Controls.Add(groupBox5);
             gbDetails.Controls.Add(groupBox6);
             gbDetails.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            gbDetails.Location = new Point(1294, 12);
+            gbDetails.Location = new Point(1300, 12);
             gbDetails.Name = "gbDetails";
             gbDetails.Size = new Size(390, 1017);
             gbDetails.TabIndex = 8;
@@ -132,9 +133,11 @@
             button4.TabIndex = 7;
             button4.Text = "Close";
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // Update
             // 
+            Update.Enabled = false;
             Update.ForeColor = Color.LimeGreen;
             Update.Location = new Point(22, 931);
             Update.Name = "Update";
@@ -142,6 +145,7 @@
             Update.TabIndex = 6;
             Update.Text = "Update";
             Update.UseVisualStyleBackColor = true;
+            Update.Click += Update_Click;
             // 
             // groupBox3
             // 
@@ -220,6 +224,7 @@
             saveTimeAndDate.TabIndex = 4;
             saveTimeAndDate.Text = "Save";
             saveTimeAndDate.UseVisualStyleBackColor = true;
+            saveTimeAndDate.Click += saveTimeAndDate_Click;
             // 
             // label2
             // 
