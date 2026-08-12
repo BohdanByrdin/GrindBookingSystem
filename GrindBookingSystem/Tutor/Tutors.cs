@@ -93,6 +93,12 @@ WHERE t.Status = 'Active'";
             string query = $"UPDATE Tutors SET Status = 'Inactive' WHERE TutorID = {tutorID}";
             Database.ExecuteNonQuery(query);
         }
+        public static DataSet SelectTutorByID(int tutorID)
+        {
+            //Select a tutor from the database by ID
+            string query = $"SELECT * FROM Tutors WHERE TutorID = {tutorID} AND Status = 'Active'";
+            return Database.ExecuteMultiRowQuery(query);
+        }
         public static List<Tutors> GetTutors()
         {
             DataSet ds = SelectAllTutors();

@@ -82,5 +82,11 @@ namespace GrindBookingSystem
             Schedule.DisplayShedule displayShedule = new Schedule.DisplayShedule();
             displayShedule.Show();
         }
+
+        private void updateClassDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Schedule.UpdateClassDetails updateClassDetails = new Schedule.UpdateClassDetails();
+            updateClassDetails.Show();
+        }
     }
 }

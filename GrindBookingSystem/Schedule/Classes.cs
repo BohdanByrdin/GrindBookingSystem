@@ -87,5 +87,14 @@ namespace GrindBookingSystem.Schedule
          $"AND Status = '{status}'";
             return Database.ExecuteMultiRowQuery(query);
         }
+        public static DataSet selectAllClassesWithMonthAndStatus(int month, int year, string status)
+        {
+            string query =
+         $"SELECT * FROM Classes " +
+         $"WHERE TO_CHAR(ClassDate, 'MM') = '{month:00}' " +
+         $"AND TO_CHAR(ClassDate, 'YYYY') = '{year}' " +
+         $"AND Status = '{status}'";
+            return Database.ExecuteMultiRowQuery(query);
+        }
     }
 }
