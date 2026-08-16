@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GrindBookingSystem.Schedule
 {
@@ -115,6 +116,18 @@ namespace GrindBookingSystem.Schedule
         {
             string query = $"UPDATE Classes SET SubjectID = {subject}, TutorID = {tutor}, RoomNo = '{room}', ClassDate = TO_DATE('{date:yyyy-MM-dd}', 'YYYY-MM-DD'), StartTime = '{startTime}', EndTime = '{endTime}' WHERE ClassID = {classID}";
             Database.ExecuteNonQuery(query);
+        }
+        public static DataSet SelectClassesForUnder18(int month,int year)
+        {
+            string query =
+       $"SELECT c.*, s.* " +
+       $"FROM Classes c " +
+       $"JOIN Subjects s ON c.SubjectID = s.SubjectID " +
+       $"WHERE TO_CHAR(c.ClassDate, 'MM') = '{month:00}' " +
+       $"AND TO_CHAR(c.ClassDate, 'YYYY') = '{year}' " +
+       $"AND c.Status = 'Active' " +
+       $"AND s.Category = 'LC'";
+            return Database.ExecuteMultiRowQuery(query);
         }
     }
 }

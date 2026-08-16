@@ -76,5 +76,17 @@ VALUES
             string query = $@"UPDATE Students SET FirstName = '{firstName}', LastName = '{lastName}', Phone = '{phoneNumber}', Email = '{email}', DateOfBirth = TO_DATE('{dateOfBirth}', 'YYYY-MM-DD') WHERE StudentID = {studentID}";
             Database.ExecuteNonQuery(query);
         }
+        public static  DataSet searchStudent(string Name)
+        {
+            string query = $@"
+    SELECT *
+    FROM Students
+    WHERE Status = 'Active'
+      AND (
+          UPPER(FirstName) LIKE UPPER('%{Name}%')
+          OR UPPER(LastName) LIKE UPPER('%{Name}%')
+      )";
+            return Database.ExecuteMultiRowQuery(query);
+        }
     }
 }

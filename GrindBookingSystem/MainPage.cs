@@ -88,5 +88,11 @@ namespace GrindBookingSystem
             Schedule.UpdateClassDetails updateClassDetails = new Schedule.UpdateClassDetails();
             updateClassDetails.Show();
         }
+
+        private void makeBookingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Booking.Booking makeBookingForm = new Booking.Booking();
+            makeBookingForm.Show();
+        }
     }
 }

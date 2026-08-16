@@ -181,6 +181,7 @@
             makeBookingToolStripMenuItem.Name = "makeBookingToolStripMenuItem";
             makeBookingToolStripMenuItem.Size = new Size(270, 34);
             makeBookingToolStripMenuItem.Text = "Make Booking";
+            makeBookingToolStripMenuItem.Click += makeBookingToolStripMenuItem_Click;
             // 
             // manageBookingToolStripMenuItem
             // 
