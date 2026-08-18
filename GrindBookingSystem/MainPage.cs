@@ -94,5 +94,11 @@ namespace GrindBookingSystem
             Booking.Booking makeBookingForm = new Booking.Booking();
             makeBookingForm.Show();
         }
+
+        private void manageBookingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Booking.ManageBooking manageBookingForm = new Booking.ManageBooking();
+            manageBookingForm.Show();
+        }
     }
 }

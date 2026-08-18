@@ -188,6 +188,7 @@
             manageBookingToolStripMenuItem.Name = "manageBookingToolStripMenuItem";
             manageBookingToolStripMenuItem.Size = new Size(270, 34);
             manageBookingToolStripMenuItem.Text = "Manage Booking";
+            manageBookingToolStripMenuItem.Click += manageBookingToolStripMenuItem_Click;
             // 
             // pictureBox1
             // 

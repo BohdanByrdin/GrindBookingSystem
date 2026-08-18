@@ -28,95 +28,142 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupBox1 = new GroupBox();
-            dataGridView1 = new DataGridView();
-            groupBox2 = new GroupBox();
+            gbDetails = new GroupBox();
+            button4 = new Button();
+            Update = new Button();
             button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            groupBox1.SuspendLayout();
+            groupBox2 = new GroupBox();
+            calendar = new MonthCalendar();
+            panel1 = new Panel();
+            dataGridView1 = new DataGridView();
+            cancelbtn = new Button();
+            gbDetails.SuspendLayout();
+            groupBox2.SuspendLayout();
+            panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // groupBox1
+            // gbDetails
             // 
-            groupBox1.Controls.Add(button3);
-            groupBox1.Controls.Add(button2);
-            groupBox1.Controls.Add(button1);
-            groupBox1.Controls.Add(groupBox2);
-            groupBox1.Controls.Add(dataGridView1);
-            groupBox1.Location = new Point(12, 12);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1648, 721);
-            groupBox1.TabIndex = 0;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
+            gbDetails.Controls.Add(button4);
+            gbDetails.Controls.Add(cancelbtn);
+            gbDetails.Controls.Add(Update);
+            gbDetails.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            gbDetails.Location = new Point(1287, 12);
+            gbDetails.Name = "gbDetails";
+            gbDetails.Size = new Size(458, 1017);
+            gbDetails.TabIndex = 12;
+            gbDetails.TabStop = false;
+            gbDetails.Text = "Change Details";
+            gbDetails.Visible = false;
+            // 
+            // button4
+            // 
+            button4.ForeColor = Color.OrangeRed;
+            button4.Location = new Point(263, 852);
+            button4.Name = "button4";
+            button4.Size = new Size(156, 66);
+            button4.TabIndex = 7;
+            button4.Text = "Close";
+            button4.UseVisualStyleBackColor = true;
+            // 
+            // Update
+            // 
+            Update.Enabled = false;
+            Update.ForeColor = Color.LimeGreen;
+            Update.Location = new Point(49, 852);
+            Update.Name = "Update";
+            Update.Size = new Size(154, 66);
+            Update.TabIndex = 6;
+            Update.Text = "Update";
+            Update.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.OrangeRed;
+            button1.Location = new Point(1419, 755);
+            button1.Name = "button1";
+            button1.Size = new Size(186, 115);
+            button1.TabIndex = 10;
+            button1.Text = "Close";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(calendar);
+            groupBox2.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            groupBox2.Location = new Point(1300, 12);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(390, 325);
+            groupBox2.TabIndex = 11;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Month";
+            // 
+            // calendar
+            // 
+            calendar.Location = new Point(49, 39);
+            calendar.Name = "calendar";
+            calendar.TabIndex = 0;
+            calendar.DateChanged += calendar_DateChanged;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(dataGridView1);
+            panel1.Location = new Point(12, 12);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1255, 1017);
+            panel1.TabIndex = 9;
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(39, 68);
+            dataGridView1.Location = new Point(15, 37);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(993, 636);
-            dataGridView1.TabIndex = 0;
+            dataGridView1.Size = new Size(1220, 960);
+            dataGridView1.TabIndex = 1;
             // 
-            // groupBox2
+            // cancelbtn
             // 
-            groupBox2.Location = new Point(1073, 42);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(545, 521);
-            groupBox2.TabIndex = 1;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "groupBox2";
-            // 
-            // button1
-            // 
-            button1.Location = new Point(1073, 608);
-            button1.Name = "button1";
-            button1.Size = new Size(154, 76);
-            button1.TabIndex = 0;
-            button1.Text = "Update";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(1271, 608);
-            button2.Name = "button2";
-            button2.Size = new Size(145, 76);
-            button2.TabIndex = 2;
-            button2.Text = "Cancel";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            button3.Location = new Point(1449, 608);
-            button3.Name = "button3";
-            button3.Size = new Size(145, 76);
-            button3.TabIndex = 2;
-            button3.Text = "Close";
-            button3.UseVisualStyleBackColor = true;
+            cancelbtn.Enabled = false;
+            cancelbtn.ForeColor = Color.FromArgb(255, 128, 128);
+            cancelbtn.Location = new Point(151, 931);
+            cancelbtn.Name = "cancelbtn";
+            cancelbtn.Size = new Size(154, 66);
+            cancelbtn.TabIndex = 6;
+            cancelbtn.Text = "Cancel Booking";
+            cancelbtn.UseVisualStyleBackColor = true;
             // 
             // ManageBooking
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1672, 745);
-            Controls.Add(groupBox1);
+            ClientSize = new Size(1770, 1054);
+            Controls.Add(gbDetails);
+            Controls.Add(button1);
+            Controls.Add(groupBox2);
+            Controls.Add(panel1);
             Name = "ManageBooking";
             Text = "ManageBooking";
-            groupBox1.ResumeLayout(false);
+            Load += ManageBooking_Load;
+            gbDetails.ResumeLayout(false);
+            groupBox2.ResumeLayout(false);
+            panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private GroupBox groupBox1;
-        private Button button3;
-        private Button button2;
+        private GroupBox gbDetails;
+        private Button button4;
+        private Button Update;
         private Button button1;
         private GroupBox groupBox2;
+        private MonthCalendar calendar;
+        private Panel panel1;
         private DataGridView dataGridView1;
+        private Button cancelbtn;
     }
 }
