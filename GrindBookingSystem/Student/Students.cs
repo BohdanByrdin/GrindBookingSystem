@@ -88,5 +88,10 @@ VALUES
       )";
             return Database.ExecuteMultiRowQuery(query);
         }
+        public static DataSet SelectStudentByID(int studentID)
+        {
+            string query = $"SELECT * FROM Students WHERE StudentID = {studentID} AND Status = 'Active'";
+            return Database.ExecuteMultiRowQuery(query);
+        }
     }
 }

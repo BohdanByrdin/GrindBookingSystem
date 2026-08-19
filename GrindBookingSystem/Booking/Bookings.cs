@@ -32,5 +32,10 @@ namespace GrindBookingSystem.Booking
             string query = $"SELECT * FROM Bookings WHERE EXTRACT(MONTH FROM BookingDate) = {month} AND EXTRACT(YEAR FROM BookingDate) = {year} AND Status = '{status}'";
             return Database.ExecuteMultiRowQuery(query);
         }
+        public void CancelBooking(int bookingID)
+        {
+            string query = $"UPDATE Bookings SET Status = 'Cancelled' WHERE BookingID = {bookingID}";
+            Database.ExecuteNonQuery(query);
+        }
     }
 }

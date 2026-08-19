@@ -129,5 +129,10 @@ namespace GrindBookingSystem.Schedule
        $"AND s.Category = 'LC'";
             return Database.ExecuteMultiRowQuery(query);
         }
+        public static DataSet SelectClassName(int classId)
+        {
+            string query = $"SELECT c.*, s.Description FROM Classes c JOIN Subjects s ON c.SubjectID = s.SubjectID WHERE c.ClassID = {classId}";
+            return Database.ExecuteMultiRowQuery(query);
+        }
     }
 }
