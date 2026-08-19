@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -112,9 +113,94 @@ namespace GrindBookingSystem.Booking
 
         private void btnBook_Click(object sender, EventArgs e)
         {
-            Bookings bookings = new Bookings(studentID, classID, bookingDate);
-            bookings.AddBooking(studentID, classID, bookingDate);
-            MessageBox.Show("Booking successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                Bookings bookings = new Bookings(studentID, classID, bookingDate);
+
+                
+                bool bookingSuccessful = Bookings.AddBooking(studentID,classID,bookingDate);
+
+                
+                if (!bookingSuccessful)
+                {
+                    MessageBox.Show(
+                        "You have already booked this lesson.",
+                        "Booking Failed",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+
+                    return;
+                }
+
+                
+                DataSet ds = Student.Students.SelectStudentByID(studentID);
+
+                
+                DataSet ds2 = Schedule.Classes.SelectClassName(classID);
+
+                if (ds.Tables.Count == 0 || ds.Tables[0].Rows.Count == 0)
+                {
+                    MessageBox.Show(
+                        "Student information could not be found.",
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
+
+                    return;
+                }
+
+                if (ds2.Tables.Count == 0 || ds2.Tables[0].Rows.Count == 0)
+                {
+                    MessageBox.Show(
+                        "Class information could not be found.",
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
+
+                    return;
+                }
+
+                string firstName = ds.Tables[0].Rows[0]["FirstName"].ToString();
+                string lastName = ds.Tables[0].Rows[0]["LastName"].ToString();
+                string emailAddress = ds.Tables[0].Rows[0]["Email"].ToString();
+                string className = ds2.Tables[0].Rows[0]["Description"].ToString();
+
+                
+                MessageBox.Show(
+                    "Booking successful!",
+                    "Success",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+
+                
+                string senderEmail = "longnon1983@gmail.com";
+                string appPassword = "irks mjyr pemr fgjp";
+                string recipientEmail = emailAddress.ToString();
+
+                string emailSubject = "You were booked for the lesson!";
+
+                string emailBody =
+                    $"<h1>Hello! {firstName} {lastName}</h1>" +
+                    $"<br><p>This is your booking confirmation:</p>" +
+                    $"<p><b>Subject:</b> {className}</p>" +
+                    $"<p><b>Booking Date:</b> {bookingDate:dd/MM/yyyy}</p>";
+
+                GmailSender.SendEmail(senderEmail, appPassword, recipientEmail, emailSubject, emailBody);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "An error occurred while creating the booking:\n" + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
         }
     }
 }

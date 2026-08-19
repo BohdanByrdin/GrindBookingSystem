@@ -21,10 +21,22 @@ namespace GrindBookingSystem.Booking
             BookingDate = bookingDate;
         }
 
-        public void AddBooking(int studentID, int classID, DateTime bookingDate)
+        public static bool AddBooking(int studentID, int classID, DateTime bookingDate)
         {
-            string query = $"INSERT INTO Bookings (StudentID, ClassID, BookingDate, Status) VALUES ({studentID}, {classID}, TO_DATE('{bookingDate:yyyy-MM-dd}', 'YYYY-MM-DD'), '{Status}')";
+            if (HasExistingBooking(studentID, classID))
+            {
+                return false;
+            }
+
+            string query = $"INSERT INTO Bookings " +
+                           $"(StudentID, ClassID, BookingDate, Status) " +
+                           $"VALUES ({studentID}, {classID}, " +
+                           $"TO_DATE('{bookingDate:yyyy-MM-dd}', 'YYYY-MM-DD'), " +
+                           $"'Active')";
+
             Database.ExecuteNonQuery(query);
+
+            return true;
         }
 
         public static DataSet selectBookingWithMonthYearAndStatus(int month, int year,string status)
@@ -36,6 +48,23 @@ namespace GrindBookingSystem.Booking
         {
             string query = $"UPDATE Bookings SET Status = 'Cancelled' WHERE BookingID = {bookingID}";
             Database.ExecuteNonQuery(query);
+        }
+        public static bool HasExistingBooking(int studentID, int classID)
+        {
+            string query = $"SELECT COUNT(*) FROM Bookings " +
+                           $"WHERE StudentID = {studentID} " +
+                           $"AND ClassID = {classID} " +
+                           $"AND Status = 'Active'";
+
+            DataSet ds = Database.ExecuteMultiRowQuery(query);
+
+            if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                int count = Convert.ToInt32(ds.Tables[0].Rows[0][0]);
+                return count > 0;
+            }
+
+            return false;
         }
     }
 }

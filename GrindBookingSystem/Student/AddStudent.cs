@@ -105,6 +105,14 @@ namespace GrindBookingSystem
             fname.Clear();
             lname.Clear();
             phone.Clear();
+
+            string senderEmail = "longnon1983@gmail.com";
+            string appPassword = "irks mjyr pemr fgjp";
+            string recipientEmail = emailAddress.ToString();
+            string emailSubject = "You are added to the System";
+            string emailBody = $"<h1>Hello! {firstName +" "+ lastName}</h1><p>You have been added to the System.<br>This is your credentials:<br>Name:{firstName + " " + lastName}<br>Email:{emailAddress}<br>Phone Number:{phoneNumber}</p>";
+
+            GmailSender.SendEmail(senderEmail, appPassword, recipientEmail, emailSubject, emailBody);
         }
 
         private bool isSpecialCharacter(string input)
