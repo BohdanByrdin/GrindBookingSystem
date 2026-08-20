@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GrindBookingSystem.Student
 {
-    internal class Students
+    public class Students
     {
         int StudentID { get; set; }
         string FirstName { get; set; }
@@ -91,6 +91,11 @@ VALUES
         public static DataSet SelectStudentByID(int studentID)
         {
             string query = $"SELECT * FROM Students WHERE StudentID = {studentID} AND Status = 'Active'";
+            return Database.ExecuteMultiRowQuery(query);
+        }
+        public static DataSet SelectStudentByEmail(string email)
+        {
+            string query = $"SELECT * FROM Students WHERE Email = '{email}' AND Status = 'Active'";
             return Database.ExecuteMultiRowQuery(query);
         }
     }
