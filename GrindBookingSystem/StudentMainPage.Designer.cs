@@ -84,6 +84,7 @@
             checkMyBookingsToolStripMenuItem.Name = "checkMyBookingsToolStripMenuItem";
             checkMyBookingsToolStripMenuItem.Size = new Size(270, 34);
             checkMyBookingsToolStripMenuItem.Text = "Check My Bookings";
+            checkMyBookingsToolStripMenuItem.Click += checkMyBookingsToolStripMenuItem_Click;
             // 
             // pictureBox1
             // 

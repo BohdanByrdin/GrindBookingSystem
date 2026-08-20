@@ -44,7 +44,7 @@ namespace GrindBookingSystem.Booking
             string query = $"SELECT * FROM Bookings WHERE EXTRACT(MONTH FROM BookingDate) = {month} AND EXTRACT(YEAR FROM BookingDate) = {year} AND Status = '{status}'";
             return Database.ExecuteMultiRowQuery(query);
         }
-        public void CancelBooking(int bookingID)
+        public static void CancelBooking(int bookingID)
         {
             string query = $"UPDATE Bookings SET Status = 'Cancelled' WHERE BookingID = {bookingID}";
             Database.ExecuteNonQuery(query);
@@ -65,6 +65,18 @@ namespace GrindBookingSystem.Booking
             }
 
             return false;
+        }
+        public static DataSet SelectBookingByStudentID(int studentID,int month,int year)
+        {
+            string query = $@"SELECT b.BookingID, s.Description, b.BookingDate, b.Status
+FROM Bookings b
+JOIN Classes c ON b.ClassID = c.ClassID
+JOIN Subjects s ON c.SubjectID = s.SubjectID
+WHERE EXTRACT(MONTH FROM b.BookingDate) = {month} 
+AND EXTRACT(YEAR FROM b.BookingDate) = {year}
+AND b.StudentID = {studentID} 
+AND b.Status = 'Active'";
+            return Database.ExecuteMultiRowQuery(query);
         }
     }
 }

@@ -92,8 +92,7 @@ namespace GrindBookingSystem.Booking
 
         private void cancelbtn_Click(object sender, EventArgs e)
         {
-            Bookings booking = new Bookings(0, 0, DateTime.Now);
-            booking.CancelBooking(bookID);
+            Bookings.CancelBooking(bookID);
             MessageBox.Show("Booking cancelled successfully.");
             gbDetails.Visible = false;
             refreshTheTable();

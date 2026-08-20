@@ -39,5 +39,11 @@ namespace GrindBookingSystem
             makeBooking.Show();
 
         }
+
+        private void checkMyBookingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CheckBookings checkBookings = new CheckBookings();
+            checkBookings.Show();
+        }
     }
 }
