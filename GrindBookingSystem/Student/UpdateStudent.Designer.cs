@@ -29,11 +29,7 @@
         private void InitializeComponent()
         {
             gbDetails = new GroupBox();
-            groupBox2 = new GroupBox();
-            saveButton = new Button();
             dateTimePicker1 = new DateTimePicker();
-            button1 = new Button();
-            dobtxt = new Label();
             label6 = new Label();
             studentIDtxt = new Label();
             label4 = new Label();
@@ -51,16 +47,13 @@
             btnClose = new Button();
             dataGridView1 = new DataGridView();
             gbDetails.SuspendLayout();
-            groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // gbDetails
             // 
-            gbDetails.Controls.Add(groupBox2);
-            gbDetails.Controls.Add(button1);
-            gbDetails.Controls.Add(dobtxt);
+            gbDetails.Controls.Add(dateTimePicker1);
             gbDetails.Controls.Add(label6);
             gbDetails.Controls.Add(studentIDtxt);
             gbDetails.Controls.Add(label4);
@@ -82,57 +75,14 @@
             gbDetails.TabStop = false;
             gbDetails.Text = "StudentDetails";
             gbDetails.Visible = false;
-            // 
-            // groupBox2
-            // 
-            groupBox2.BackColor = Color.Linen;
-            groupBox2.Controls.Add(saveButton);
-            groupBox2.Controls.Add(dateTimePicker1);
-            groupBox2.Location = new Point(208, 306);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(303, 181);
-            groupBox2.TabIndex = 6;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Choose Date";
-            groupBox2.Visible = false;
-            // 
-            // saveButton
-            // 
-            saveButton.Location = new Point(82, 119);
-            saveButton.Name = "saveButton";
-            saveButton.Size = new Size(141, 45);
-            saveButton.TabIndex = 1;
-            saveButton.Text = "Save";
-            saveButton.UseVisualStyleBackColor = true;
-            saveButton.Click += saveButton_Click;
+            gbDetails.Enter += gbDetails_Enter;
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(33, 60);
+            dateTimePicker1.Location = new Point(208, 273);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(220, 39);
             dateTimePicker1.TabIndex = 0;
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.OldLace;
-            button1.ForeColor = Color.DarkOliveGreen;
-            button1.Location = new Point(219, 318);
-            button1.Name = "button1";
-            button1.Size = new Size(112, 42);
-            button1.TabIndex = 16;
-            button1.Text = "change";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
-            // 
-            // dobtxt
-            // 
-            dobtxt.AutoSize = true;
-            dobtxt.Location = new Point(219, 271);
-            dobtxt.Name = "dobtxt";
-            dobtxt.Size = new Size(83, 32);
-            dobtxt.TabIndex = 6;
-            dobtxt.Text = "label6";
             // 
             // label6
             // 
@@ -293,7 +243,6 @@
             Load += UpdateStudent_Load;
             gbDetails.ResumeLayout(false);
             gbDetails.PerformLayout();
-            groupBox2.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
@@ -317,11 +266,7 @@
         private GroupBox groupBox1;
         private Button btnClose;
         private DataGridView dataGridView1;
-        private Button button1;
-        private Label dobtxt;
         private Label label6;
-        private GroupBox groupBox2;
-        private Button saveButton;
         private DateTimePicker dateTimePicker1;
     }
 }

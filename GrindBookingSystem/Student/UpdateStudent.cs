@@ -15,7 +15,6 @@ namespace GrindBookingSystem.Student
 {
     public partial class UpdateStudent : Form
     {
-        int changeStatus = 0;
         public UpdateStudent()
         {
             InitializeComponent();
@@ -43,14 +42,13 @@ namespace GrindBookingSystem.Student
                 lnametxt.Text = row.Cells["LastName"].Value.ToString()!;
                 emailtxt.Text = row.Cells["Email"].Value.ToString()!;
                 phonetxt.Text = row.Cells["Phone"].Value.ToString()!;
-                dobtxt.Text = row.Cells["DateofBirth"].Value.ToString()!;
+                dateTimePicker1.Value = Convert.ToDateTime(row.Cells["dateofbirth"].Value.ToString());
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            changeStatus = 1;
-            groupBox2.Visible = true;
+
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -65,7 +63,7 @@ namespace GrindBookingSystem.Student
             string lastName = lnametxt.Text.Trim();
             string email = emailtxt.Text.Trim();
             string phoneNumber = phonetxt.Text.Trim();
-            string dateofbirth = dobtxt.Text;
+            string dateofbirth = dateTimePicker1.Value.ToString("yyyy-MM-dd");
 
             if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(phoneNumber))
             {
@@ -102,16 +100,10 @@ namespace GrindBookingSystem.Student
                 MessageBox.Show("Phone number must contain only digits", "Error");
                 return;
             }
-
-
-            if (changeStatus == 1)
-            {
-                dateofbirth = dateTimePicker1.Value.ToString("yyyy-MM-dd");
-            }
             Students student = new Students(studentID, firstName, lastName, email, phoneNumber, dateofbirth);
             student.UpdateStudent(studentID, firstName, lastName, email, phoneNumber, dateofbirth);
 
-            MessageBox.Show("Student status updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Student updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             // Refresh the DataGridView
             DataSet ds = Students.SelectAllStudents();
             if (ds.Tables.Count > 0)
@@ -128,7 +120,6 @@ namespace GrindBookingSystem.Student
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            groupBox2.Visible = false;
         }
 
         private void btnCloseUpdate_Click(object sender, EventArgs e)
@@ -138,7 +129,12 @@ namespace GrindBookingSystem.Student
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Close();
+        }
+
+        private void gbDetails_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -24,6 +24,12 @@ namespace GrindBookingSystem
 
         private void checkMyProfileToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            StudentDetailsPage studentDetails = new StudentDetailsPage();
+            studentDetails.Show();
+        }
+
+        private void StudentMainPage_Load(object sender, EventArgs e)
+        {
 
         }
     }

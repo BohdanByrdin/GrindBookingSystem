@@ -104,6 +104,7 @@
             MainMenuStrip = menuStrip1;
             Name = "StudentMainPage";
             Text = "StudentMainPage";
+            Load += StudentMainPage_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

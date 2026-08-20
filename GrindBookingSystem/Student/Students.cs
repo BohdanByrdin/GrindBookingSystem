@@ -9,12 +9,12 @@ namespace GrindBookingSystem.Student
 {
     public class Students
     {
-        int StudentID { get; set; }
-        string FirstName { get; set; }
-        string LastName { get; set; }
-        string Email { get; set; }
-        string PhoneNumber { get; set; }
-        string DateOfBirth { get; set; }
+        public int StudentID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+        public string DateOfBirth { get; set; }
         string Status { get; set; } = "Active";
 
         public Students(string firstName, string lastName, string email, string phoneNumber, string dateOfBirth)
@@ -73,8 +73,16 @@ VALUES
         public void UpdateStudent(int studentID, string firstName, string lastName, string email, string phoneNumber, string dateOfBirth)
         {
             //Update a student in the database
-            string query = $@"UPDATE Students SET FirstName = '{firstName}', LastName = '{lastName}', Phone = '{phoneNumber}', Email = '{email}', DateOfBirth = TO_DATE('{dateOfBirth}', 'YYYY-MM-DD') WHERE StudentID = {studentID}";
-            Database.ExecuteNonQuery(query);
+            try
+            {
+                string query = $@"UPDATE Students SET FirstName = '{firstName}', LastName = '{lastName}', Phone = '{phoneNumber}', Email = '{email}', DateOfBirth = TO_DATE('{dateOfBirth}', 'YYYY-MM-DD') WHERE StudentID = {studentID}";
+                Database.ExecuteNonQuery(query);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error updating student: {ex.Message}");
+                return;
+            }
         }
         public static  DataSet searchStudent(string Name)
         {
