@@ -32,5 +32,12 @@ namespace GrindBookingSystem
         {
 
         }
+
+        private void bookForClassToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            MakeBooking makeBooking = new MakeBooking();
+            makeBooking.Show();
+
+        }
     }
 }

@@ -145,7 +145,7 @@
             // groupBox5
             // 
             groupBox5.Controls.Add(cbSubjects);
-            groupBox5.Location = new Point(657, 30);
+            groupBox5.Location = new Point(24, 30);
             groupBox5.Name = "groupBox5";
             groupBox5.Size = new Size(580, 135);
             groupBox5.TabIndex = 1;
@@ -255,7 +255,7 @@
             // groupBox2
             // 
             groupBox2.Controls.Add(cbTutors);
-            groupBox2.Location = new Point(24, 30);
+            groupBox2.Location = new Point(628, 30);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(598, 135);
             groupBox2.TabIndex = 0;
@@ -264,6 +264,7 @@
             // 
             // cbTutors
             // 
+            cbTutors.Enabled = false;
             cbTutors.FormattingEnabled = true;
             cbTutors.Location = new Point(113, 46);
             cbTutors.Name = "cbTutors";

@@ -65,7 +65,6 @@ namespace GrindBookingSystem.Booking
             DateTime date = calendar.SelectionStart;
             int month = date.Month;
             int year = date.Year;
-            string status = "Active";
             if (calculateAge(dob) < 18)
             {
                 DataSet ds = Classes.SelectClassesForUnder18(month, year);

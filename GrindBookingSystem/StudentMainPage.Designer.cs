@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentMainPage));
             menuStrip1 = new MenuStrip();
             checkMyProfileToolStripMenuItem = new ToolStripMenuItem();
-            bookForClassToolStripMenuItem = new ToolStripMenuItem();
             checkMyProfileToolStripMenuItem1 = new ToolStripMenuItem();
+            bookForClassToolStripMenuItem = new ToolStripMenuItem();
             bookForClassToolStripMenuItem1 = new ToolStripMenuItem();
             checkMyBookingsToolStripMenuItem = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
@@ -58,6 +58,13 @@
             checkMyProfileToolStripMenuItem.Text = "Profile";
             checkMyProfileToolStripMenuItem.Click += checkMyProfileToolStripMenuItem_Click;
             // 
+            // checkMyProfileToolStripMenuItem1
+            // 
+            checkMyProfileToolStripMenuItem1.Name = "checkMyProfileToolStripMenuItem1";
+            checkMyProfileToolStripMenuItem1.Size = new Size(246, 34);
+            checkMyProfileToolStripMenuItem1.Text = "Check My Profile";
+            checkMyProfileToolStripMenuItem1.Click += checkMyProfileToolStripMenuItem1_Click;
+            // 
             // bookForClassToolStripMenuItem
             // 
             bookForClassToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { bookForClassToolStripMenuItem1, checkMyBookingsToolStripMenuItem });
@@ -65,18 +72,12 @@
             bookForClassToolStripMenuItem.Size = new Size(94, 29);
             bookForClassToolStripMenuItem.Text = "Booking";
             // 
-            // checkMyProfileToolStripMenuItem1
-            // 
-            checkMyProfileToolStripMenuItem1.Name = "checkMyProfileToolStripMenuItem1";
-            checkMyProfileToolStripMenuItem1.Size = new Size(270, 34);
-            checkMyProfileToolStripMenuItem1.Text = "Check My Profile";
-            checkMyProfileToolStripMenuItem1.Click += checkMyProfileToolStripMenuItem1_Click;
-            // 
             // bookForClassToolStripMenuItem1
             // 
             bookForClassToolStripMenuItem1.Name = "bookForClassToolStripMenuItem1";
             bookForClassToolStripMenuItem1.Size = new Size(270, 34);
-            bookForClassToolStripMenuItem1.Text = "Book for Class";
+            bookForClassToolStripMenuItem1.Text = "Make Booking";
+            bookForClassToolStripMenuItem1.Click += bookForClassToolStripMenuItem1_Click;
             // 
             // checkMyBookingsToolStripMenuItem
             // 

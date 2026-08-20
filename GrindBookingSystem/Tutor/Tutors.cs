@@ -116,6 +116,28 @@ WHERE t.Status = 'Active'";
             }
             return tutors;
         }
+        public static List<Tutors> GetTutorsBySubgectID(int subjectID)
+        {
+            DataSet ds = SelectTutorsBySubjectID(subjectID);
+            List<Tutors> tutors = new List<Tutors>();
+            foreach (DataRow row in ds.Tables[0].Rows)
+            {
+                tutors.Add(new Tutors(
+                    row["TutorID"] != DBNull.Value ? Convert.ToInt32(row["TutorID"]) : 0,
+                    row["FirstName"].ToString()!,
+                    row["LastName"].ToString()!,
+                    row["Email"].ToString()!,
+                    row["Phone"].ToString()!,
+                    row["SubjectID"] != DBNull.Value ? Convert.ToInt32(row["SubjectID"]) : 0
+                ));
+            }
+            return tutors;
+        }
+        public static DataSet SelectTutorsBySubjectID(int subjectID)
+        {
+            string query = $"SELECT * FROM Tutors WHERE SubjectID = {subjectID} AND Status = 'Active'";
+            return Database.ExecuteMultiRowQuery(query);
+        }
         public override string ToString()
         {
             return FirstName + " " + LastName;

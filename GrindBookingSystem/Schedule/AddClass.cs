@@ -27,15 +27,11 @@ namespace GrindBookingSystem.Schedule
             cbTutors.Items.Clear();
             cbRooms.Items.Clear();
             List<Subjects> subjects = Subjects.GetSubjects();
-            List<Tutor.Tutors> tutors = Tutor.Tutors.GetTutors();
+            
             List<Rooms> rooms = Rooms.GetRooms();
             foreach (Subjects subject in subjects)
             {
                 cbSubjects.Items.Add(subject.Description);
-            }
-            foreach (Tutors tutor in tutors)
-            {
-                cbTutors.Items.Add(tutor);
             }
             foreach (Rooms room in rooms)
             {
@@ -46,6 +42,18 @@ namespace GrindBookingSystem.Schedule
 
         private void cbSubjects_SelectedIndexChanged(object sender, EventArgs e)
         {
+            int subjectID = cbSubjects.SelectedIndex+1;
+            List<Tutor.Tutors> tutors = Tutor.Tutors.GetTutorsBySubgectID(subjectID);
+            if (tutors.Count == 0)
+            {
+                MessageBox.Show("No tutors available for the selected subject.");
+                return;
+            }
+            cbTutors.Enabled = true;
+            foreach (Tutors tutor in tutors)
+            {
+                cbTutors.Items.Add(tutor);
+            }
 
         }
 

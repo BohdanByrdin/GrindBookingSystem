@@ -120,13 +120,14 @@ namespace GrindBookingSystem.Schedule
         public static DataSet SelectClassesForUnder18(int month,int year)
         {
             string query =
-       $"SELECT c.*, s.* " +
-       $"FROM Classes c " +
-       $"JOIN Subjects s ON c.SubjectID = s.SubjectID " +
-       $"WHERE TO_CHAR(c.ClassDate, 'MM') = '{month:00}' " +
-       $"AND TO_CHAR(c.ClassDate, 'YYYY') = '{year}' " +
-       $"AND c.Status = 'Active' " +
-       $"AND s.Category = 'LC'";
+        $"SELECT s.Description, t.FirstName, t.LastName,c.*  " +
+        $"FROM Classes c " +
+        $"JOIN Subjects s ON c.SubjectID = s.SubjectID " +
+        $"JOIN Tutors t ON c.TutorID = t.TutorID " +   
+        $"WHERE TO_CHAR(c.ClassDate, 'MM') = '{month:00}' " +
+        $"AND TO_CHAR(c.ClassDate, 'YYYY') = '{year}' " +
+        $"AND c.Status = 'Active' " +
+        $"AND s.Category = 'LC'";
             return Database.ExecuteMultiRowQuery(query);
         }
         public static DataSet SelectClassName(int classId)
