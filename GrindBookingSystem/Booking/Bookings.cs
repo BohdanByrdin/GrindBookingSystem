@@ -78,5 +78,29 @@ AND b.StudentID = {studentID}
 AND b.Status = 'Confirmed'";
             return Database.ExecuteMultiRowQuery(query);
         }
+        public static int countBookingsforClass(int classID)
+        {
+            string query = @$"SELECT COUNT(*) AS BookingCount
+FROM Bookings
+WHERE ClassID = {classID}
+AND Status = 'Confirmed'";
+            DataSet ds = Database.ExecuteMultiRowQuery(query);
+            if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return Convert.ToInt32(ds.Tables[0].Rows[0]["BookingCount"]);
+            }
+            return -1;
+
+        }
+        public static bool isThereSpace(int classID)
+        {
+            int bookingsNumber = countBookingsforClass(classID);
+            int capacity = Schedule.Classes.SelectRoomCapacityByClassID(classID);
+            if (capacity == -1 || bookingsNumber==-1)
+            {
+                throw new Exception($"No room found for ClassID {classID}");
+            }
+            return bookingsNumber < capacity;
+        }
     }
 }

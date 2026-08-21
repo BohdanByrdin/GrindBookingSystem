@@ -63,7 +63,7 @@ namespace GrindBookingSystem.Schedule
             }
             return false;
         }
-        public static bool CheckClassOverlapForUpdate(int classID,int tutorID,string roomNo,DateTime date,string startTime,string endTime)
+        public static bool CheckClassOverlapForUpdate(int classID, int tutorID, string roomNo, DateTime date, string startTime, string endTime)
         {
             string query = $@"
         SELECT ClassID
@@ -117,13 +117,13 @@ namespace GrindBookingSystem.Schedule
             string query = $"UPDATE Classes SET SubjectID = {subject}, TutorID = {tutor}, RoomNo = '{room}', ClassDate = TO_DATE('{date:yyyy-MM-dd}', 'YYYY-MM-DD'), StartTime = '{startTime}', EndTime = '{endTime}' WHERE ClassID = {classID}";
             Database.ExecuteNonQuery(query);
         }
-        public static DataSet SelectClassesForUnder18(int month,int year)
+        public static DataSet SelectClassesForUnder18(int month, int year)
         {
             string query =
         $"SELECT s.Description, t.FirstName, t.LastName,c.*  " +
         $"FROM Classes c " +
         $"JOIN Subjects s ON c.SubjectID = s.SubjectID " +
-        $"JOIN Tutors t ON c.TutorID = t.TutorID " +   
+        $"JOIN Tutors t ON c.TutorID = t.TutorID " +
         $"WHERE TO_CHAR(c.ClassDate, 'MM') = '{month:00}' " +
         $"AND TO_CHAR(c.ClassDate, 'YYYY') = '{year}' " +
         $"AND c.Status = 'Active' " +
@@ -135,5 +135,24 @@ namespace GrindBookingSystem.Schedule
             string query = $"SELECT c.*, s.Description FROM Classes c JOIN Subjects s ON c.SubjectID = s.SubjectID WHERE c.ClassID = {classId}";
             return Database.ExecuteMultiRowQuery(query);
         }
+
+        public static int SelectRoomCapacityByClassID(int classID)
+        {
+            string query = $@"SELECT r.Capacity
+                            FROM Classes c 
+                            JOIN Rooms r ON c.RoomNo = r.RoomNo
+                            WHERE c.ClassID = {classID}";
+
+
+            DataSet ds = Database.ExecuteMultiRowQuery(query);
+
+            if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                return Convert.ToInt32(ds.Tables[0].Rows[0]["Capacity"]);
+            }
+            return -1;
+        }
+
     }
 }
+

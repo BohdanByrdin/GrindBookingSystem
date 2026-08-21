@@ -91,7 +91,20 @@ namespace GrindBookingSystem
 
 
                 bool bookingSuccessful = Bookings.AddBooking(studentID, classID, bookingDate);
+                bool enoughSpace = Bookings.isThereSpace(classID);
 
+                if (!enoughSpace)
+                {
+                    MessageBox.Show(
+                       "No space in room.",
+                       "Booking Failed",
+                       MessageBoxButtons.OK,
+                       MessageBoxIcon.Warning
+                   );
+                    dataGridView2.Enabled = true;
+
+                    return;
+                }
 
                 if (!bookingSuccessful)
                 {
