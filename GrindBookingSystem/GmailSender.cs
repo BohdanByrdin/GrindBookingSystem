@@ -17,7 +17,7 @@ namespace GrindBookingSystem
             // Use the 16-character App Password here
             string senderPassword = fromPassword;
 
-            var from = new MailAddress(fromAddress, "Your Name"); // Optional: Set display name
+            var from = new MailAddress(fromAddress, "Grind Booking System"); // Optional: Set display name
             var to = new MailAddress(toAddress);
 
             var smtp = new SmtpClient

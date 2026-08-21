@@ -27,7 +27,7 @@ namespace GrindBookingSystem.Booking
             DateTime date = calendar.SelectionStart;
             int month = date.Month;
             int year = date.Year;
-            string status = "Active";
+            string status = "Confirmed";
             DataSet ds = Bookings.selectBookingWithMonthYearAndStatus(month, year, status);
             if (ds.Tables.Count > 0)
             {

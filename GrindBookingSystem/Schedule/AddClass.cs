@@ -126,10 +126,10 @@ namespace GrindBookingSystem.Schedule
                 return;
             }
             int subjectID = cbSubjects.SelectedIndex + 1;
-            Tutors selectedTutor = (Tutors)cbTutors.SelectedItem;
+            Tutors selectedTutor = (Tutors)cbTutors.SelectedItem!;
 
             int tutorId = selectedTutor.TutorID;
-            string selectedRoom = cbRooms.SelectedItem.ToString()!;
+            string selectedRoom = cbRooms.SelectedItem!.ToString()!;
             string roomID = selectedRoom.Split('-')[0].Trim();
             if (Classes.checkClassOverlap(tutorId.ToString(), roomID, selectedDate, startTimeString, endTimeString))
             {

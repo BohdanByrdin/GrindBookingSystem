@@ -32,18 +32,17 @@ namespace GrindBookingSystem.Student
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            if (e.RowIndex >= 0)
-            {
-                gbDetails.Visible = true;
-                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
-                studentIDtxt.Text = row.Cells["StudentID"].Value.ToString()!;
-                fnametxt.Text = row.Cells["FirstName"].Value.ToString()!;
-                lnametxt.Text = row.Cells["LastName"].Value.ToString()!;
-                emailtxt.Text = row.Cells["Email"].Value.ToString()!;
-                phonetxt.Text = row.Cells["Phone"].Value.ToString()!;
-                dateTimePicker1.Value = Convert.ToDateTime(row.Cells["dateofbirth"].Value.ToString());
-            }
+                if (e.RowIndex >= 0)
+                {
+                    gbDetails.Visible = true;
+                    DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                    studentIDtxt.Text = row.Cells["StudentID"].Value.ToString()!;
+                    fnametxt.Text = row.Cells["FirstName"].Value.ToString()!;
+                    lnametxt.Text = row.Cells["LastName"].Value.ToString()!;
+                    emailtxt.Text = row.Cells["Email"].Value.ToString()!;
+                    phonetxt.Text = row.Cells["Phone"].Value.ToString()!;
+                    dateTimePicker1.Value = Convert.ToDateTime(row.Cells["dateofbirth"].Value.ToString());
+                }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -54,7 +53,7 @@ namespace GrindBookingSystem.Student
         private void btnUpdate_Click(object sender, EventArgs e)
         {
 
-            string pattern = "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$";
+            string pattern = "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$"; //https://mailtrap.io/blog/validate-email-address-c/#Validate-email-addresses-with-regex
 
             Regex rg = new Regex(pattern);
 
@@ -104,7 +103,7 @@ namespace GrindBookingSystem.Student
             student.UpdateStudent(studentID, firstName, lastName, email, phoneNumber, dateofbirth);
 
             MessageBox.Show("Student updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            // Refresh the DataGridView
+
             DataSet ds = Students.SelectAllStudents();
             if (ds.Tables.Count > 0)
             {

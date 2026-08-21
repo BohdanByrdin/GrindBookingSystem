@@ -67,15 +67,22 @@ namespace GrindBookingSystem
         private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dataGridView2.Rows[e.RowIndex];
-            if (MessageBox.Show("Are you sure you want to choose this class?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            try
             {
-                dataGridView2.Enabled = false;
-                classID = Convert.ToInt32(row.Cells["ClassID"].Value.ToString());
-                bookingDate = Convert.ToDateTime(row.Cells["ClassDate"].Value.ToString());
+                if (MessageBox.Show("Are you sure you want to choose this class?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    dataGridView2.Enabled = false;
+                    classID = Convert.ToInt32(row.Cells["ClassID"].Value.ToString());
+                    bookingDate = Convert.ToDateTime(row.Cells["ClassDate"].Value.ToString());
+                }
+                else { return; }
             }
-            else { return; }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error selecting class: " + ex.Message);
+                return;
+            }
         }
-
         private void btnBook_Click(object sender, EventArgs e)
         {
             try
@@ -94,6 +101,7 @@ namespace GrindBookingSystem
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Warning
                     );
+                    dataGridView2.Enabled = true;
 
                     return;
                 }
@@ -128,10 +136,10 @@ namespace GrindBookingSystem
                     return;
                 }
 
-                string firstName = ds.Tables[0].Rows[0]["FirstName"].ToString();
-                string lastName = ds.Tables[0].Rows[0]["LastName"].ToString();
-                string emailAddress = ds.Tables[0].Rows[0]["Email"].ToString();
-                string className = ds2.Tables[0].Rows[0]["Description"].ToString();
+                string firstName = ds.Tables[0].Rows[0]["FirstName"].ToString()!;
+                string lastName = ds.Tables[0].Rows[0]["LastName"].ToString()!;
+                string emailAddress = ds.Tables[0].Rows[0]["Email"].ToString()!;
+                string className = ds2.Tables[0].Rows[0]["Description"].ToString()!;
 
 
                 MessageBox.Show(

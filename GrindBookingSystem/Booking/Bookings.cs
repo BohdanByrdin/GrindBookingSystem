@@ -13,7 +13,7 @@ namespace GrindBookingSystem.Booking
         public int StudentID { get; set; }
         public int ClassID { get; set; }
         public DateTime BookingDate { get; set; }
-        public string Status { get; set; } = "Active";
+        public string Status { get; set; } = "Confirmed";
         public Bookings(int studentID, int classID, DateTime bookingDate)
         {
             StudentID = studentID;
@@ -32,7 +32,7 @@ namespace GrindBookingSystem.Booking
                            $"(StudentID, ClassID, BookingDate, Status) " +
                            $"VALUES ({studentID}, {classID}, " +
                            $"TO_DATE('{bookingDate:yyyy-MM-dd}', 'YYYY-MM-DD'), " +
-                           $"'Active')";
+                           $"'Confirmed')";
 
             Database.ExecuteNonQuery(query);
 
@@ -54,7 +54,7 @@ namespace GrindBookingSystem.Booking
             string query = $"SELECT COUNT(*) FROM Bookings " +
                            $"WHERE StudentID = {studentID} " +
                            $"AND ClassID = {classID} " +
-                           $"AND Status = 'Active'";
+                           $"AND Status = 'Confirmed'";
 
             DataSet ds = Database.ExecuteMultiRowQuery(query);
 
@@ -68,14 +68,14 @@ namespace GrindBookingSystem.Booking
         }
         public static DataSet SelectBookingByStudentID(int studentID,int month,int year)
         {
-            string query = $@"SELECT b.BookingID, s.Description, b.BookingDate, b.Status
+            string query = $@"SELECT b.BookingID, s.Description, b.BookingDate,c.StartTime,c.EndTime, b.Status
 FROM Bookings b
 JOIN Classes c ON b.ClassID = c.ClassID
 JOIN Subjects s ON c.SubjectID = s.SubjectID
 WHERE EXTRACT(MONTH FROM b.BookingDate) = {month} 
 AND EXTRACT(YEAR FROM b.BookingDate) = {year}
 AND b.StudentID = {studentID} 
-AND b.Status = 'Active'";
+AND b.Status = 'Confirmed'";
             return Database.ExecuteMultiRowQuery(query);
         }
     }

@@ -26,7 +26,7 @@ namespace GrindBookingSystem
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            string pattern = "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$";
+            string pattern = "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$";  //https://mailtrap.io/blog/validate-email-address-c/#Validate-email-addresses-with-regex
 
             Regex rg = new Regex(pattern);
 

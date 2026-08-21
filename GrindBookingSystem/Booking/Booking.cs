@@ -123,11 +123,12 @@ namespace GrindBookingSystem.Booking
                 if (!bookingSuccessful)
                 {
                     MessageBox.Show(
-                        "You have already booked this lesson.",
+                        "This student have already booked this lesson.",
                         "Booking Failed",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Warning
                     );
+                    dataGridView2.Enabled = true;
 
                     return;
                 }
@@ -162,10 +163,10 @@ namespace GrindBookingSystem.Booking
                     return;
                 }
 
-                string firstName = ds.Tables[0].Rows[0]["FirstName"].ToString();
-                string lastName = ds.Tables[0].Rows[0]["LastName"].ToString();
-                string emailAddress = ds.Tables[0].Rows[0]["Email"].ToString();
-                string className = ds2.Tables[0].Rows[0]["Description"].ToString();
+                string firstName = ds.Tables[0].Rows[0]["FirstName"].ToString()!;
+                string lastName = ds.Tables[0].Rows[0]["LastName"].ToString()!;
+                string emailAddress = ds.Tables[0].Rows[0]["Email"].ToString()!;
+                string className = ds2.Tables[0].Rows[0]["Description"].ToString()!;
 
                 
                 MessageBox.Show(

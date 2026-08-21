@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             gbClass = new GroupBox();
+            label1 = new Label();
             btnClose = new Button();
             btnBook = new Button();
             dataGridView2 = new DataGridView();
             calendar = new MonthCalendar();
-            label1 = new Label();
             gbClass.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
@@ -48,15 +48,24 @@
             gbClass.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             gbClass.Location = new Point(12, 12);
             gbClass.Name = "gbClass";
-            gbClass.Size = new Size(1372, 448);
+            gbClass.Size = new Size(1560, 664);
             gbClass.TabIndex = 2;
             gbClass.TabStop = false;
             gbClass.Text = "Choose Class";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(15, 39);
+            label1.Name = "label1";
+            label1.Size = new Size(376, 28);
+            label1.TabIndex = 3;
+            label1.Text = "Double Click on the class to choose it*";
+            // 
             // btnClose
             // 
             btnClose.ForeColor = Color.OrangeRed;
-            btnClose.Location = new Point(1199, 341);
+            btnClose.Location = new Point(1403, 575);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(145, 62);
             btnClose.TabIndex = 2;
@@ -67,7 +76,7 @@
             // btnBook
             // 
             btnBook.ForeColor = Color.Green;
-            btnBook.Location = new Point(1048, 341);
+            btnBook.Location = new Point(1236, 575);
             btnBook.Name = "btnBook";
             btnBook.Size = new Size(145, 62);
             btnBook.TabIndex = 2;
@@ -81,31 +90,22 @@
             dataGridView2.Location = new Point(15, 74);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 62;
-            dataGridView2.Size = new Size(1021, 368);
+            dataGridView2.Size = new Size(1191, 584);
             dataGridView2.TabIndex = 1;
             dataGridView2.CellDoubleClick += dataGridView2_CellDoubleClick;
             // 
             // calendar
             // 
-            calendar.Location = new Point(1048, 39);
+            calendar.Location = new Point(1236, 39);
             calendar.Name = "calendar";
             calendar.TabIndex = 0;
             calendar.DateChanged += calendar_DateChanged;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(15, 39);
-            label1.Name = "label1";
-            label1.Size = new Size(376, 28);
-            label1.TabIndex = 3;
-            label1.Text = "Double Click on the class to choose it*";
             // 
             // MakeBooking
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1413, 481);
+            ClientSize = new Size(1588, 688);
             Controls.Add(gbClass);
             Name = "MakeBooking";
             Text = "MakeBooking";
